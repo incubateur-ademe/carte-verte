@@ -155,6 +155,10 @@ const config = {
         "plugin:@typescript-eslint/stylistic",
         "plugin:@typescript-eslint/recommended-type-checked",
       ],
+      parserOptions: {
+        project: "./tsconfig.json",
+        tsconfigRootDir: __dirname,
+      },
       plugins: [
         "@typescript-eslint",
         "typescript-sort-keys"

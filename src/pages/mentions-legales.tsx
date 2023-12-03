@@ -1,8 +1,7 @@
-import React from "react";
-import type { NextPage } from "next";
-import Head from "next/head";
-
 import { Alert } from "@codegouvfr/react-dsfr/Alert";
+import { type NextPage } from "next";
+import Head from "next/head";
+import React from "react";
 
 import { MentionPart } from "../components/MentionPart";
 
@@ -32,10 +31,7 @@ const MentionsLegales: NextPage = () => {
             title="Directeur de la publication"
             description="Monsieur X et Madame X, Directeur de la publication"
           />
-          <MentionPart
-            title="Hébergement du site"
-            description="Ce site est hébergé par :"
-          >
+          <MentionPart title="Hébergement du site" description="Ce site est hébergé par :">
             <p className="fr-mb-2w">
               Microsoft Azure <br />
               37 Quai du Président Roosevelt <br />
@@ -53,21 +49,14 @@ const MentionsLegales: NextPage = () => {
           >
             <h3>Signaler un dysfonctionnement</h3>
             <p className="fr-mb-2w">
-              Si vous rencontrez un défaut d’accessibilité vous empêchant
-              d’accéder à un contenu ou une fonctionnalité du site, merci de
-              nous en faire part. Si vous n’obtenez pas de réponse rapide de
-              notre part, vous êtes en droit de faire parvenir vos doléances ou
-              une demande de saisine au Défenseur des droits.
+              Si vous rencontrez un défaut d’accessibilité vous empêchant d’accéder à un contenu ou une fonctionnalité
+              du site, merci de nous en faire part. Si vous n’obtenez pas de réponse rapide de notre part, vous êtes en
+              droit de faire parvenir vos doléances ou une demande de saisine au Défenseur des droits.
             </p>
 
             <p>
-              Pour en savoir plus sur la politique d’accessibilité numérique de
-              l’État&nbsp;:
-              <a
-                href="https://www.numerique.gouv.fr/publications/rgaa-accessibilite/"
-                target="_blank"
-                rel="noreferrer"
-              >
+              Pour en savoir plus sur la politique d’accessibilité numérique de l’État&nbsp;:
+              <a href="https://www.numerique.gouv.fr/publications/rgaa-accessibilite/" target="_blank" rel="noreferrer">
                 numerique.gouv.fr/publications/rgaa-accessibilite
               </a>
             </p>

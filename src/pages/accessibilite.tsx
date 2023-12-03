@@ -1,8 +1,7 @@
-import React from "react";
-import type { NextPage } from "next";
-import Head from "next/head";
-
 import { Alert } from "@codegouvfr/react-dsfr/Alert";
+import { type NextPage } from "next";
+import Head from "next/head";
+import React from "react";
 
 import { DeclarationAccessibilite } from "../components/DeclarationAccessibilite";
 
@@ -18,10 +17,7 @@ const Accessibilite: NextPage = () => {
           description={
             <>
               Utilisez le{" "}
-              <a href="https://betagouv.github.io/a11y-generateur-declaration/#create">
-                générateur de déclaration
-              </a>
-              .
+              <a href="https://betagouv.github.io/a11y-generateur-declaration/#create">générateur de déclaration</a>.
             </>
           }
           title={<>Cette page doit être mise à jour</>}

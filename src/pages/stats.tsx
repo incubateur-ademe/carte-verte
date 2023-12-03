@@ -1,13 +1,12 @@
-import React, { useEffect } from "react";
-import type { NextPage } from "next";
+import { type NextPage } from "next";
 import Head from "next/head";
+import { useEffect, useState } from "react";
 
 import { StatTile } from "../components/StatTile";
-
-import { fetchMatomoData, MatomoResult } from "../lib";
+import { fetchMatomoData, type MatomoResult } from "../lib";
 
 const Stats: NextPage = () => {
-  const [matomoData, setMatomoData] = React.useState<MatomoResult>({
+  const [matomoData, setMatomoData] = useState<MatomoResult>({
     nbPageViews: 0,
     nbVisits: 0,
     nbUniqPageViews: 0,

@@ -1,10 +1,10 @@
 import { fr } from "@codegouvfr/react-dsfr";
 
-export type StatTileProps = {
+export interface StatTileProps {
+  description?: React.ReactNode | string;
+  stats: number | string;
   title: string;
-  stats: string | number;
-  description?: string | React.ReactNode;
-};
+}
 
 export const StatTile = (props: StatTileProps): JSX.Element => {
   return (

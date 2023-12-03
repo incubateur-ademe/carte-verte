@@ -1,8 +1,8 @@
-export type MatomoResult = {
+export interface MatomoResult {
   nbPageViews: number;
   nbUniqPageViews: number;
   nbVisits: number;
-};
+}
 
 export const fetchMatomoData = async (): Promise<MatomoResult> => {
   const MATOMO_URL = [
@@ -14,7 +14,7 @@ export const fetchMatomoData = async (): Promise<MatomoResult> => {
       .then(data => data.json())
       .catch(() => {
         return null;
-      })
+      }),
   );
   const [nbVisitData, infoData] = await Promise.all(promises);
   return {

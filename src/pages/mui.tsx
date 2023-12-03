@@ -1,63 +1,56 @@
-import * as React from "react";
 import { MuiDsfrThemeProvider } from "@codegouvfr/react-dsfr/mui";
-import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
 import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
-import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import Chip from "@mui/material/Chip";
-import Typography from "@mui/material/Typography";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
-
-import Divider from "@mui/material/Divider";
-import Paper from "@mui/material/Paper";
-import MenuList from "@mui/material/MenuList";
-import MenuItem from "@mui/material/MenuItem";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ContentCut from "@mui/icons-material/ContentCut";
-import ContentCopy from "@mui/icons-material/ContentCopy";
-import ContentPaste from "@mui/icons-material/ContentPaste";
-import Cloud from "@mui/icons-material/Cloud";
-
-import dayjs, { Dayjs } from "dayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
-
-import Box from "@mui/material/Box";
-import Badge from "@mui/material/Badge";
-import ButtonGroup from "@mui/material/ButtonGroup";
 import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
+import Cloud from "@mui/icons-material/Cloud";
+import ContentCopy from "@mui/icons-material/ContentCopy";
+import ContentCut from "@mui/icons-material/ContentCut";
+import ContentPaste from "@mui/icons-material/ContentPaste";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import MailIcon from "@mui/icons-material/Mail";
-
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
-
-import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
-
-import Link from "@mui/material/Link";
-
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import RemoveIcon from "@mui/icons-material/Remove";
+import ShareIcon from "@mui/icons-material/Share";
+import Autocomplete from "@mui/material/Autocomplete";
+import Avatar from "@mui/material/Avatar";
+import Badge from "@mui/material/Badge";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
 import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
+import Chip from "@mui/material/Chip";
 import Collapse from "@mui/material/Collapse";
-import Avatar from "@mui/material/Avatar";
-import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import { red } from "@mui/material/colors";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+import Divider from "@mui/material/Divider";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import IconButton, { type IconButtonProps } from "@mui/material/IconButton";
+import Link from "@mui/material/Link";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import MenuItem from "@mui/material/MenuItem";
+import MenuList from "@mui/material/MenuList";
+import Paper from "@mui/material/Paper";
+import Stack from "@mui/material/Stack";
+import Step from "@mui/material/Step";
+import StepLabel from "@mui/material/StepLabel";
+import Stepper from "@mui/material/Stepper";
+import { createTheme, styled, ThemeProvider } from "@mui/material/styles";
+import Switch from "@mui/material/Switch";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import { DataGrid, type GridColDef, type GridValueGetterParams } from "@mui/x-data-grid";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+import dayjs, { type Dayjs } from "dayjs";
+import * as React from "react";
 
 const muiDefaultDarkTheme = createTheme({
   palette: {
@@ -82,7 +75,7 @@ export default function Mui() {
         control={
           <Switch
             checked={isProviderEnabled}
-            onChange={(event) => setIsProviderEnabled(event.target.checked)}
+            onChange={event => setIsProviderEnabled(event.target.checked)}
             inputProps={{ "aria-label": "controlled" }}
           />
         }
@@ -93,7 +86,7 @@ export default function Mui() {
         control={
           <Switch
             checked={isDark}
-            onChange={(event) => setIsDark(event.target.checked)}
+            onChange={event => setIsDark(event.target.checked)}
             inputProps={{ "aria-label": "controlled" }}
           />
         }
@@ -135,7 +128,7 @@ const { ComboBox } = (() => {
         id="combo-box-demo"
         options={top100Films}
         sx={{ width: 300, mt: 7 }}
-        renderInput={(params) => <TextField {...params} label="Movie" />}
+        renderInput={params => <TextField {...params} label="Movie" />}
       />
     );
   }
@@ -210,8 +203,7 @@ const { ComboBox } = (() => {
     { label: "Alien", year: 1979 },
     { label: "Sunset Boulevard", year: 1950 },
     {
-      label:
-        "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb",
+      label: "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb",
       year: 1964,
     },
     { label: "The Great Dictator", year: 1940 },
@@ -380,9 +372,7 @@ function IconMenu() {
 }
 
 function MaterialUIPickers() {
-  const [value, setValue] = React.useState<Dayjs | null>(
-    dayjs("2014-08-18T21:11:54")
-  );
+  const [value, setValue] = React.useState<Dayjs | null>(dayjs("2014-08-18T21:11:54"));
 
   const handleChange = (newValue: Dayjs | null) => {
     setValue(newValue);
@@ -397,7 +387,7 @@ function MaterialUIPickers() {
           value={value}
           onChange={handleChange}
           slotProps={{
-            textField: {}
+            textField: {},
           }}
         />
         <MobileDatePicker
@@ -406,7 +396,7 @@ function MaterialUIPickers() {
           value={value}
           onChange={handleChange}
           slotProps={{
-            textField: {}
+            textField: {},
           }}
         />
         <TimePicker
@@ -414,7 +404,7 @@ function MaterialUIPickers() {
           value={value}
           onChange={handleChange}
           slotProps={{
-            textField: {}
+            textField: {},
           }}
         />
         <DateTimePicker
@@ -422,7 +412,7 @@ function MaterialUIPickers() {
           value={value}
           onChange={handleChange}
           slotProps={{
-            textField: {}
+            textField: {},
           }}
         />
       </Stack>
@@ -481,9 +471,7 @@ function BadgeVisibility() {
         </Badge>
         <FormControlLabel
           sx={{ color: "text.primary" }}
-          control={
-            <Switch checked={!invisible} onChange={handleBadgeVisibility} />
-          }
+          control={<Switch checked={!invisible} onChange={handleBadgeVisibility} />}
           label="Show Badge"
         />
       </div>
@@ -492,11 +480,7 @@ function BadgeVisibility() {
 }
 
 const { HorizontalLinearStepper } = (() => {
-  const steps = [
-    "Select campaign settings",
-    "Create an ad group",
-    "Create an ad",
-  ];
+  const steps = ["Select campaign settings", "Create an ad group", "Create an ad"];
 
   function MyHorizontalLinearStepper() {
     const [activeStep, setActiveStep] = React.useState(0);
@@ -517,12 +501,12 @@ const { HorizontalLinearStepper } = (() => {
         newSkipped.delete(activeStep);
       }
 
-      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      setActiveStep(prevActiveStep => prevActiveStep + 1);
       setSkipped(newSkipped);
     };
 
     const handleBack = () => {
-      setActiveStep((prevActiveStep) => prevActiveStep - 1);
+      setActiveStep(prevActiveStep => prevActiveStep - 1);
     };
 
     const handleSkip = () => {
@@ -532,8 +516,8 @@ const { HorizontalLinearStepper } = (() => {
         throw new Error("You can't skip a step that isn't optional.");
       }
 
-      setActiveStep((prevActiveStep) => prevActiveStep + 1);
-      setSkipped((prevSkipped) => {
+      setActiveStep(prevActiveStep => prevActiveStep + 1);
+      setSkipped(prevSkipped => {
         const newSkipped = new Set(prevSkipped.values());
         newSkipped.add(activeStep);
         return newSkipped;
@@ -553,9 +537,7 @@ const { HorizontalLinearStepper } = (() => {
               optional?: React.ReactNode;
             } = {};
             if (isStepOptional(index)) {
-              labelProps.optional = (
-                <Typography variant="caption">Optional</Typography>
-              );
+              labelProps.optional = <Typography variant="caption">Optional</Typography>;
             }
             if (isStepSkipped(index)) {
               stepProps.completed = false;
@@ -569,9 +551,7 @@ const { HorizontalLinearStepper } = (() => {
         </Stepper>
         {activeStep === steps.length ? (
           <React.Fragment>
-            <Typography sx={{ mt: 2, mb: 1 }}>
-              All steps completed - you&apos;re finished
-            </Typography>
+            <Typography sx={{ mt: 2, mb: 1 }}>All steps completed - you&apos;re finished</Typography>
             <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
               <Box sx={{ flex: "1 1 auto" }} />
               <Button onClick={handleReset}>Reset</Button>
@@ -581,12 +561,7 @@ const { HorizontalLinearStepper } = (() => {
           <React.Fragment>
             <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
             <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-              <Button
-                color="inherit"
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                sx={{ mr: 1 }}
-              >
+              <Button color="inherit" disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>
                 Back
               </Button>
               <Box sx={{ flex: "1 1 auto" }} />
@@ -595,9 +570,7 @@ const { HorizontalLinearStepper } = (() => {
                   Skip
                 </Button>
               )}
-              <Button onClick={handleNext}>
-                {activeStep === steps.length - 1 ? "Finish" : "Next"}
-              </Button>
+              <Button onClick={handleNext}>{activeStep === steps.length - 1 ? "Finish" : "Next"}</Button>
             </Box>
           </React.Fragment>
         )}
@@ -636,8 +609,7 @@ const { DataGridDemo } = (() => {
       description: "This column has a value getter and is not sortable.",
       sortable: false,
       width: 160,
-      valueGetter: (params: GridValueGetterParams) =>
-        `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+      valueGetter: (params: GridValueGetterParams) => `${params.row.firstName || ""} ${params.row.lastName || ""}`,
     },
   ];
 
@@ -665,8 +637,7 @@ const { DataGridDemo } = (() => {
 })();
 
 const { Links } = (() => {
-  const preventDefault = (event: React.SyntheticEvent) =>
-    event.preventDefault();
+  const preventDefault = (event: React.SyntheticEvent) => event.preventDefault();
 
   function MyLinks() {
     return (
@@ -744,9 +715,8 @@ const { RecipeReviewCard } = (() => {
         />
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests. Add 1 cup of frozen peas along with
-            the mussels, if you like.
+            This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup
+            of frozen peas along with the mussels, if you like.
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
@@ -756,12 +726,7 @@ const { RecipeReviewCard } = (() => {
           <IconButton aria-label="share">
             <ShareIcon />
           </IconButton>
-          <ExpandMore
-            expand={expanded}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
+          <ExpandMore expand={expanded} onClick={handleExpandClick} aria-expanded={expanded} aria-label="show more">
             <ExpandMoreIcon />
           </ExpandMore>
         </CardActions>
@@ -769,32 +734,22 @@ const { RecipeReviewCard } = (() => {
           <CardContent>
             <Typography paragraph>Method:</Typography>
             <Typography paragraph>
-              Heat 1/2 cup of the broth in a pot until simmering, add saffron
-              and set aside for 10 minutes.
+              Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10 minutes.
             </Typography>
             <Typography paragraph>
-              Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet
-              over medium-high heat. Add chicken, shrimp and chorizo, and cook,
-              stirring occasionally until lightly browned, 6 to 8 minutes.
-              Transfer shrimp to a large plate and set aside, leaving chicken
-              and chorizo in the pan. Add pimentón, bay leaves, garlic,
-              tomatoes, onion, salt and pepper, and cook, stirring often until
-              thickened and fragrant, about 10 minutes. Add saffron broth and
-              remaining 4 1/2 cups chicken broth; bring to a boil.
+              Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high heat. Add chicken,
+              shrimp and chorizo, and cook, stirring occasionally until lightly browned, 6 to 8 minutes. Transfer shrimp
+              to a large plate and set aside, leaving chicken and chorizo in the pan. Add pimentón, bay leaves, garlic,
+              tomatoes, onion, salt and pepper, and cook, stirring often until thickened and fragrant, about 10 minutes.
+              Add saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
             </Typography>
             <Typography paragraph>
-              Add rice and stir very gently to distribute. Top with artichokes
-              and peppers, and cook without stirring, until most of the liquid
-              is absorbed, 15 to 18 minutes. Reduce heat to medium-low, add
-              reserved shrimp and mussels, tucking them down into the rice, and
-              cook again without stirring, until mussels have opened and rice is
-              just tender, 5 to 7 minutes more. (Discard any mussels that
-              don&apos;t open.)
+              Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook without stirring,
+              until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat to medium-low, add reserved shrimp and
+              mussels, tucking them down into the rice, and cook again without stirring, until mussels have opened and
+              rice is just tender, 5 to 7 minutes more. (Discard any mussels that don&apos;t open.)
             </Typography>
-            <Typography>
-              Set aside off of the heat to let rest for 10 minutes, and then
-              serve.
-            </Typography>
+            <Typography>Set aside off of the heat to let rest for 10 minutes, and then serve.</Typography>
           </CardContent>
         </Collapse>
       </Card>

@@ -1,10 +1,10 @@
-import * as React from "react";
-import Head from "next/head";
-import { NextPage } from "next";
-import { push as matomoPush } from "@socialgouv/matomo-next";
 import { Alert } from "@codegouvfr/react-dsfr/Alert";
 import { Button } from "@codegouvfr/react-dsfr/Button";
 import Stack from "@mui/material/Stack";
+import { push as matomoPush } from "@socialgouv/matomo-next";
+import { type NextPage } from "next";
+import Head from "next/head";
+import * as React from "react";
 
 const Home: NextPage = () => {
   return (
@@ -12,12 +12,7 @@ const Home: NextPage = () => {
       <Head>
         <title>Template | Fabrique numérique des ministères sociaux</title>
       </Head>
-      <Alert
-        closable
-        description="Everything went well"
-        severity="success"
-        title="Message successfully sent"
-      />
+      <Alert closable description="Everything went well" severity="success" title="Message successfully sent" />
       <div className="fr-grid-row fr-grid-row--center fr-grid-row--middle fr-mb-8w fr-mt-8w">
         <div className="fr-col-12 fr-col-md-6">
           <h1>
@@ -27,18 +22,15 @@ const Home: NextPage = () => {
             </span>
           </h1>
           <p className="fr-mt-10w">
-            Pariatur veniam ipsum pariatur elit ullamco sit quis ipsum ad veniam
-            proident sunt. Qui ut irure in quis reprehenderit. Laborum anim ad
-            laboris ipsum magna ullamco consequat ex consectetur. Duis sit
-            adipisicing ipsum occaecat commodo consequat officia ea. Cupidatat
-            fugiat reprehenderit aliqua eiusmod mollit Lorem consectetur. Minim
-            elit proident eu qui exercitation mollit id esse velit et dolore
-            velit laboris. Ipsum occaecat Lorem occaecat magna excepteur veniam
-            ullamco cupidatat irure incididunt velit nulla.
+            Pariatur veniam ipsum pariatur elit ullamco sit quis ipsum ad veniam proident sunt. Qui ut irure in quis
+            reprehenderit. Laborum anim ad laboris ipsum magna ullamco consequat ex consectetur. Duis sit adipisicing
+            ipsum occaecat commodo consequat officia ea. Cupidatat fugiat reprehenderit aliqua eiusmod mollit Lorem
+            consectetur. Minim elit proident eu qui exercitation mollit id esse velit et dolore velit laboris. Ipsum
+            occaecat Lorem occaecat magna excepteur veniam ullamco cupidatat irure incididunt velit nulla.
           </p>
         </div>
         <div className="fr-col-12 fr-col-offset-md-1 fr-col-md-4">
-          {/* eslint-disable-next-line jsx-a11y/img-redundant-alt*/}
+          {}
           {/* eslint-disable-next-line @next/next/no-img-element*/}
           <img
             className="fr-mt-2w"

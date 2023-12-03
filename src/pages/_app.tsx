@@ -1,18 +1,17 @@
-import { ReactNode, useEffect } from "react";
-import type { AppProps } from "next/app";
+import { fr } from "@codegouvfr/react-dsfr";
+import { headerFooterDisplayItem } from "@codegouvfr/react-dsfr/Display";
+import { Footer } from "@codegouvfr/react-dsfr/Footer";
+import { Header } from "@codegouvfr/react-dsfr/Header";
+import { MuiDsfrThemeProvider } from "@codegouvfr/react-dsfr/mui";
+import { createNextDsfrIntegrationApi } from "@codegouvfr/react-dsfr/next-pagesdir";
+import { init } from "@socialgouv/matomo-next";
+import { type AppProps } from "next/app";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
-import { createEmotionSsrAdvancedApproach } from "tss-react/next";
-import { createNextDsfrIntegrationApi } from "@codegouvfr/react-dsfr/next-pagesdir";
-import { Footer } from "@codegouvfr/react-dsfr/Footer";
-import { fr } from "@codegouvfr/react-dsfr";
-import { Header } from "@codegouvfr/react-dsfr/Header";
-import { headerFooterDisplayItem } from "@codegouvfr/react-dsfr/Display";
-import { init } from "@socialgouv/matomo-next";
-import { MuiDsfrThemeProvider } from "@codegouvfr/react-dsfr/mui";
+import { type ReactNode, useEffect } from "react";
 import { useStyles } from "tss-react/dsfr";
+import { createEmotionSsrAdvancedApproach } from "tss-react/next";
 
 declare module "@codegouvfr/react-dsfr/next-pagesdir" {
   interface RegisterLink {
@@ -50,12 +49,11 @@ const { withDsfr, dsfrDocumentApi } = createNextDsfrIntegrationApi({
   ],
 });
 
-const { augmentDocumentWithEmotionCache, withAppEmotionCache } =
-  createEmotionSsrAdvancedApproach({
-    key: "css",
-  });
+const { augmentDocumentWithEmotionCache, withAppEmotionCache } = createEmotionSsrAdvancedApproach({
+  key: "css",
+});
 
-export { dsfrDocumentApi, augmentDocumentWithEmotionCache };
+export { augmentDocumentWithEmotionCache, dsfrDocumentApi };
 
 const brandTop = (
   <>
@@ -67,8 +65,7 @@ const brandTop = (
 
 const homeLinkPops = {
   href: "/",
-  title:
-    "Accueil - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)",
+  title: "Accueil - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)",
 };
 
 const bottomLinks = [
@@ -97,8 +94,8 @@ const bottomLinks = [
         process.env.NEXT_PUBLIC_APP_VERSION
           ? `/releases/tag/v${process.env.NEXT_PUBLIC_APP_VERSION}`
           : process.env.NEXT_PUBLIC_APP_VERSION_COMMIT
-          ? `/commit/${process.env.NEXT_PUBLIC_APP_VERSION}`
-          : ""
+            ? `/commit/${process.env.NEXT_PUBLIC_APP_VERSION}`
+            : ""
       }`,
     },
   },
@@ -113,17 +110,9 @@ const Layout = ({ children }: { children: ReactNode }) => {
     <MuiDsfrThemeProvider>
       <Head>
         <title>Template | Fabrique numérique des ministères sociaux</title>
-        {contentSecurityPolicy && (
-          <meta
-            httpEquiv="Content-Security-Policy"
-            content={contentSecurityPolicy}
-          ></meta>
-        )}
+        {contentSecurityPolicy && <meta httpEquiv="Content-Security-Policy" content={contentSecurityPolicy}></meta>}
         <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Template de la fabrique des ministères sociaux."
-        />
+        <meta name="description" content="Template de la fabrique des ministères sociaux." />
       </Head>
       <Header
         brandTop={brandTop}

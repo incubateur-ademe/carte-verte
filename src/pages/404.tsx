@@ -1,6 +1,6 @@
-import type { NextPage } from "next";
-import { useEffect } from "react";
 import { push } from "@socialgouv/matomo-next";
+import { type NextPage } from "next";
+import { useEffect } from "react";
 
 const NotFound: NextPage = () => {
   useEffect(() => {

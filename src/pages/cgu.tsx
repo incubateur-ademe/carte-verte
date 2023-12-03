@@ -1,8 +1,7 @@
-import React from "react";
-import type { NextPage } from "next";
-import Head from "next/head";
-
 import { Alert } from "@codegouvfr/react-dsfr/Alert";
+import { type NextPage } from "next";
+import Head from "next/head";
+import React from "react";
 
 import { MentionPart } from "../components/MentionPart";
 

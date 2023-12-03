@@ -1,16 +1,13 @@
-import * as React from "react";
 import { fr } from "@codegouvfr/react-dsfr";
-
-import Head from "next/head";
-import { NextPage } from "next";
-
+import { Accordion } from "@codegouvfr/react-dsfr/Accordion";
 import { Alert } from "@codegouvfr/react-dsfr/Alert";
 import { Button } from "@codegouvfr/react-dsfr/Button";
-import { Tabs } from "@codegouvfr/react-dsfr/Tabs";
 import { Card } from "@codegouvfr/react-dsfr/Card";
-import { Accordion } from "@codegouvfr/react-dsfr/Accordion";
-
+import { Tabs } from "@codegouvfr/react-dsfr/Tabs";
 import Stack from "@mui/material/Stack";
+import { type NextPage } from "next";
+import Head from "next/head";
+import * as React from "react";
 
 const Home: NextPage = () => {
   return (
@@ -18,19 +15,9 @@ const Home: NextPage = () => {
       <Head>
         <title>Template | Fabrique numérique des ministères sociaux</title>
       </Head>
-      <Alert
-        closable
-        description="Everything went well"
-        severity="success"
-        title="Message successfully sent"
-      />
+      <Alert closable description="Everything went well" severity="success" title="Message successfully sent" />
       <br />
-      <Alert
-        closable
-        description="Everything went bad"
-        severity="error"
-        title="Message NOT successfully sent"
-      />
+      <Alert closable description="Everything went bad" severity="error" title="Message NOT successfully sent" />
       <br />
       <Tabs
         tabs={[
@@ -55,12 +42,8 @@ const Home: NextPage = () => {
       />
       <br />
       <div className={fr.cx("fr-accordions-group")}>
-        <Accordion label="Name of the Accordion 1">
-          Content of the Accordion 1
-        </Accordion>
-        <Accordion label="Name of the Accordion 2">
-          Content of the Accordion 2
-        </Accordion>
+        <Accordion label="Name of the Accordion 1">Content of the Accordion 1</Accordion>
+        <Accordion label="Name of the Accordion 2">Content of the Accordion 2</Accordion>
       </div>
       <br />
       <Stack spacing={2} sx={{ mt: 5 }} direction="row">
