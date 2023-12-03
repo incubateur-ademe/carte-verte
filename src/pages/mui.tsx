@@ -393,29 +393,37 @@ function MaterialUIPickers() {
       <Stack spacing={3} sx={{ mt: 7 }}>
         <DesktopDatePicker
           label="Date desktop"
-          inputFormat="MM/DD/YYYY"
+          format="MM/DD/YYYY"
           value={value}
           onChange={handleChange}
-          renderInput={(params) => <TextField {...params} />}
+          slotProps={{
+            textField: {}
+          }}
         />
         <MobileDatePicker
           label="Date mobile"
-          inputFormat="MM/DD/YYYY"
+          format="MM/DD/YYYY"
           value={value}
           onChange={handleChange}
-          renderInput={(params) => <TextField {...params} />}
+          slotProps={{
+            textField: {}
+          }}
         />
         <TimePicker
           label="Time"
           value={value}
           onChange={handleChange}
-          renderInput={(params) => <TextField {...params} />}
+          slotProps={{
+            textField: {}
+          }}
         />
         <DateTimePicker
           label="Date&Time picker"
           value={value}
           onChange={handleChange}
-          renderInput={(params) => <TextField {...params} />}
+          slotProps={{
+            textField: {}
+          }}
         />
       </Stack>
     </LocalizationProvider>
