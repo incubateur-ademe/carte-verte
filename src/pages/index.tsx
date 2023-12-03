@@ -7,10 +7,6 @@ import { Button } from "@codegouvfr/react-dsfr/Button";
 import Stack from "@mui/material/Stack";
 
 const Home: NextPage = () => {
-  const onClick1 = () => {
-    throw new Error("Hello, sentry");
-  };
-
   return (
     <>
       <Head>
@@ -52,10 +48,6 @@ const Home: NextPage = () => {
         </div>
       </div>
       <Stack spacing={2} sx={{ mt: 5 }} direction="row">
-        <Button title="Trigger sentry event" onClick={onClick1}>
-          Trigger sentry error
-        </Button>
-
         <Button
           title="Trigger matomo event"
           onClick={() => {

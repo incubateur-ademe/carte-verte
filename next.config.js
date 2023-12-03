@@ -1,11 +1,10 @@
-const { withSentryConfig } = require("@sentry/nextjs");
-
 const { version } = require("./package.json");
 
 const ContentSecurityPolicy = require("./csp.config");
 
 /** @type {import('next').NextConfig} */
-const moduleExports = {
+const config = {
+  poweredByHeader: false,
   reactStrictMode: true,
   swcMinify: true,
   webpack: (config) => {
@@ -16,18 +15,18 @@ const moduleExports = {
 
     return config;
   },
-  sentry: {
-    disableClientWebpackPlugin: true,
-    disableServerWebpackPlugin: true,
+  experimental: {
+    typedRoutes: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
   env: {
     NEXT_PUBLIC_APP_VERSION: version,
-    NEXT_PUBLIC_APP_VERSION_COMMIT: process.env.GITHUB_SHA,
+    NEXT_PUBLIC_APP_VERSION_COMMIT: process.env.GITHUB_SHA || "unknown commit",
     CONTENT_SECURITY_POLICY: ContentSecurityPolicy,
   },
   transpilePackages: ["@codegouvfr/react-dsfr", "tss-react"],
 };
 
-module.exports = {
-  ...withSentryConfig(moduleExports, { silent: true }),
-};
+module.exports = config;
