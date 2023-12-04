@@ -28,35 +28,23 @@ const config = {
     "prettier",
     // disable conflicting rules with plugin (not config!)
     "plugin:prettier/recommended",
-    "plugin:jsx-a11y/recommended"
+    "plugin:jsx-a11y/recommended",
   ],
-  plugins: [
-    "prettier",
-    "unused-imports",
-    "simple-import-sort",
-    "lodash"
-  ],
-  ignorePatterns: [
-    "!**/.*.js?(x)",
-    "node_modules"
-  ],
+  plugins: ["prettier", "unused-imports", "simple-import-sort", "lodash"],
+  ignorePatterns: ["!**/.*.js?(x)", "node_modules"],
+  settings: {
+    "import/resolver": {
+      typescript: {}, // this loads <rootdir>/tsconfig.json to eslint
+    },
+  },
   rules: {
-    "@next/next/no-html-link-for-pages": [
-      "error",
-      [
-        "src/app",
-        "src/pages"
-      ]
-    ],
+    "@next/next/no-html-link-for-pages": ["error", ["src/app", "src/pages"]],
     "react-hooks/rules-of-hooks": "error", // Vérifie les règles des Hooks
     "react-hooks/exhaustive-deps": "warn", // Vérifie les tableaux de dépendances
     "react/no-unescaped-entities": [
       "error",
       {
-        forbid: [
-          ">",
-          "}"
-        ],
+        forbid: [">", "}"],
       },
     ],
     "react/forbid-component-props": [
@@ -87,9 +75,7 @@ const config = {
         paths: [
           {
             name: "react",
-            importNames: [
-              "default"
-            ],
+            importNames: ["default"],
             message: 'Import "React" par défaut déjà géré par Next.',
           },
         ],
@@ -118,21 +104,15 @@ const config = {
     "import/no-useless-path-segments": "warn",
     "import/no-absolute-path": "warn",
     "import/no-named-as-default": "off",
-    "import/consistent-type-specifier-style": [
-      "error",
-      "prefer-inline"
-    ],
+    "import/consistent-type-specifier-style": ["error", "prefer-inline"],
     "import/no-duplicates": [
       "error",
       {
-        "prefer-inline": true
-      }
+        "prefer-inline": true,
+      },
     ],
     "sort-import": "off",
-    "lodash/import-scope": [
-      "error",
-      "member"
-    ],
+    "lodash/import-scope": ["error", "member"],
     "prettier/prettier": [
       "error",
       {
@@ -147,22 +127,13 @@ const config = {
   },
   overrides: [
     {
-      files: [
-        "**/*.ts?(x)"
-      ],
-      extends: [
-        "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/stylistic",
-        "plugin:@typescript-eslint/recommended-type-checked",
-      ],
+      files: ["**/*.ts?(x)"],
+      extends: ["plugin:@typescript-eslint/recommended-type-checked"],
       parserOptions: {
         project: "./tsconfig.json",
         tsconfigRootDir: __dirname,
       },
-      plugins: [
-        "@typescript-eslint",
-        "typescript-sort-keys"
-      ],
+      plugins: ["@typescript-eslint", "typescript-sort-keys"],
       rules: {
         "@typescript-eslint/adjacent-overload-signatures": "error",
         "@typescript-eslint/array-type": [
@@ -178,9 +149,7 @@ const config = {
             paths: [
               {
                 name: "react",
-                importNames: [
-                  "default"
-                ],
+                importNames: ["default"],
                 message: 'Import "React" par défaut déjà géré par Next.',
                 allowTypeImports: true,
               },
@@ -223,14 +192,10 @@ const config = {
           },
         ],
         "@typescript-eslint/sort-type-constituents": "warn",
-        // handled by tsc already (also not working -_-')
-        "import/no-unresolved": "off",
       },
     },
     {
-      files: [
-        "src/pages/**/*.ts?(x)", `src/app /**/+(${nextFiles}).tsx`
-      ],
+      files: ["src/pages/**/*.ts?(x)", `src/app/**/+(${nextFiles}).tsx`],
       rules: {
         "import/no-default-export": "off",
       },

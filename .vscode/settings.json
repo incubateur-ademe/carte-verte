@@ -14,5 +14,6 @@
   },
   "files.associations": {
     ".env*": "dotenv",
+    "*.mdx": "markdown"
   },
 }

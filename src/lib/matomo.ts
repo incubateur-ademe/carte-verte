@@ -4,6 +4,21 @@ export interface MatomoResult {
   nbVisits: number;
 }
 
+namespace MatomoApi {
+  export namespace VisitsSummary {
+    export interface GetVisits {
+      value?: number;
+    }
+  }
+
+  export namespace Actions {
+    export interface Get {
+      nb_pageviews?: number;
+      nb_uniq_pageviews?: number;
+    }
+  }
+}
+
 export const fetchMatomoData = async (): Promise<MatomoResult> => {
   const MATOMO_URL = [
     `${process.env.NEXT_PUBLIC_MATOMO_URL}/?module=API&method=VisitsSummary.getVisits&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&format=JSON&period=year&date=today`,
@@ -16,7 +31,10 @@ export const fetchMatomoData = async (): Promise<MatomoResult> => {
         return null;
       }),
   );
-  const [nbVisitData, infoData] = await Promise.all(promises);
+  const [nbVisitData, infoData] = (await Promise.all(promises)) as [
+    MatomoApi.VisitsSummary.GetVisits,
+    MatomoApi.Actions.Get,
+  ];
   return {
     nbPageViews: infoData?.nb_pageviews ?? 0,
     nbUniqPageViews: infoData?.nb_uniq_pageviews ?? 0,
