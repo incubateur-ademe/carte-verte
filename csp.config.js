@@ -3,7 +3,7 @@ connect-src 'self' https://*.gouv.fr;
 font-src 'self' data: blob:;
 media-src 'self' https://*.gouv.fr;
 img-src 'self' data: https://*.gouv.fr https://raw.githubusercontent.com/;
-script-src 'self' ${process.env.NODE_ENV === "development" ? "'unsafe-eval' 'unsafe-inline'" : ""};
+script-src 'self' 'unsafe-inline' ${process.env.NODE_ENV === "development" ? "'unsafe-eval'" : ""};
 frame-src 'self' https://*.gouv.fr;
 style-src 'self' https://*.gouv.fr 'unsafe-inline';
 frame-ancestors 'self' https://*.gouv.fr;
