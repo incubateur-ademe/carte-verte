@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 const PolitiqueConfidentialite = () => {
   return (
-    <Container my="2w">
+    <Container my="4w">
       <h1>{title}</h1>
       <PolitiqueConfidentialiteTraitementContent />
       <h2>Hébergement</h2>

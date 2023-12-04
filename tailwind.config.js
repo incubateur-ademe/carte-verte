@@ -2,7 +2,9 @@
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
-    extend: {},
+    fontFamily: {
+      "geist-sans": ["var(--font-geist-sans)", "sans-serif"],
+    },
   },
   plugins: [],
   corePlugins: {

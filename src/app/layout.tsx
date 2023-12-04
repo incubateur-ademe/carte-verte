@@ -1,11 +1,14 @@
 import "./global.css";
 
+import { headerFooterDisplayItem } from "@codegouvfr/react-dsfr/Display";
 import { Footer } from "@codegouvfr/react-dsfr/Footer";
 import { Header, type HeaderProps } from "@codegouvfr/react-dsfr/Header";
 import { DsfrHead } from "@codegouvfr/react-dsfr/next-appdir/DsfrHead";
 import { DsfrProvider } from "@codegouvfr/react-dsfr/next-appdir/DsfrProvider";
 import { getHtmlAttributes } from "@codegouvfr/react-dsfr/next-appdir/getHtmlAttributes";
 import { SkipLinks } from "@codegouvfr/react-dsfr/SkipLinks";
+import { cx } from "@codegouvfr/react-dsfr/tools/cx";
+import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import Link from "next/link";
 import { type PropsWithChildren, Suspense } from "react";
@@ -14,7 +17,11 @@ import { Brand } from "@/components/Brand";
 import { Matomo } from "@/components/utils/Matomo";
 import { config } from "@/config";
 
-import { ConsentBannerAndConsentManagement } from "../consentManagement";
+import {
+  ConsentBannerAndConsentManagement,
+  FooterConsentManagementItem,
+  FooterPersonalDataPolicyItem,
+} from "../consentManagement";
 import { defaultColorScheme } from "../defaultColorScheme";
 import { StartDsfr } from "../StartDsfr";
 import style from "./root.module.scss";
@@ -48,7 +55,11 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
-    <html lang="fr" {...getHtmlAttributes({ defaultColorScheme, lang: "fr" })} className={style.app}>
+    <html
+      lang="fr"
+      {...getHtmlAttributes({ defaultColorScheme, lang: "fr" })}
+      className={cx(GeistSans.variable, style.app)}
+    >
       <head>
         <StartDsfr />
         <DsfrHead
@@ -104,6 +115,34 @@ const RootLayout = ({ children }: PropsWithChildren) => {
               accessibility="non compliant"
               contentDescription={`${config.name} est un service développé par l'accélérateur de la transition écologique de l'ADEME.`}
               operatorLogo={operatorLogo}
+              bottomItems={[
+                {
+                  text: "CGU",
+                  linkProps: { href: "/cgu" },
+                },
+                <FooterPersonalDataPolicyItem key="FooterPersonalDataPolicyItem" />,
+                {
+                  ...headerFooterDisplayItem,
+                  iconId: "fr-icon-theme-fill",
+                },
+                <FooterConsentManagementItem key="FooterConsentManagementItem" />,
+                {
+                  text: "▲ Propulsé par Vercel",
+                  linkProps: {
+                    href: "https://vercel.com/?utm_source=ademe&utm_campaign=oss",
+                    className: "font-geist-sans",
+                  },
+                },
+              ]}
+              termsLinkProps={{ href: "/mentions-legales" }}
+              license={
+                <>
+                  Sauf mention contraire, tous les contenus de ce site sont sous{" "}
+                  <a href={`${config.repositoryUrl}/main/LICENSE`} target="_blank" rel="noreferrer">
+                    licence Apache 2.0
+                  </a>
+                </>
+              }
             />
           </div>
         </DsfrProvider>

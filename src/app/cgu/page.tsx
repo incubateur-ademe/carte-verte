@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 const Cgu = () => (
-  <Container>
+  <Container my="4w">
     <h1>{title}</h1>
     <CguContent />
   </Container>

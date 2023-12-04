@@ -3,7 +3,7 @@
 - [ ] sitemap.xml (kill scripts/prebuild.ts)
 - [ ] robots.txt
 - [ ] favicon.ico
-- [ ] mdx
+- [x] mdx
 - [ ] deploy (vercel or scalingo)
 - [ ] sentry
 - [ ] fin matomo

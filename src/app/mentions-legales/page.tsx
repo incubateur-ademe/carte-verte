@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 const MentionsLegales = () => (
-  <Container>
+  <Container my="4w">
     <h1>{title}</h1>
     <MentionsLegalesContent />
   </Container>

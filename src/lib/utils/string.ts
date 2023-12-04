@@ -15,3 +15,9 @@ export const isFalsy = (v?: string): boolean => !v || ["no", "false", "0"].inclu
  */
 export const escapeStringRegexp = (string: string) =>
   string.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&").replace(/-/g, "\\x2d");
+
+export const slugify = (string: string) =>
+  string
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
