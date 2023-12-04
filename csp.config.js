@@ -1,5 +1,5 @@
 const ContentSecurityPolicy = `default-src 'self' https://*.gouv.fr;
-connect-src 'self' https://*.gouv.fr;
+connect-src 'self' https://*.gouv.fr ${process.env.CARTE_VERTE_ENV === "preprod" ? "https://vercel.live" : ""};
 font-src 'self' data: blob:;
 media-src 'self' https://*.gouv.fr;
 img-src 'self' data: https://*.gouv.fr https://raw.githubusercontent.com/;
