@@ -1,15 +1,18 @@
-import NextLink, { type LinkRestProps } from "next/link";
+import NextLink from "next/link";
 
-export const MdxLink = (props: LinkRestProps & { href?: string }) => {
+export const MdxLink = (props: JSX.IntrinsicElements["a"]) => {
+  if (typeof props.href === "undefined") {
+    return null;
+  }
   const href = props.href;
-  const isInternalLink = href?.startsWith("/") ?? false;
+  const isInternalLink = href.startsWith("/");
 
   if (isInternalLink) {
-    return <NextLink href={href as __next_route_internal_types__.RouteImpl<string>}>{props.children}</NextLink>;
+    return <NextLink href={href as never}>{props.children}</NextLink>;
   }
 
   return (
-    <a target="_blank" rel="nofollow noopener noreferrer" {...props} href={href}>
+    <a {...props} target="_blank" rel="nofollow noopener noreferrer">
       {props.children}
     </a>
   );
