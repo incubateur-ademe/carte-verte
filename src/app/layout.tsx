@@ -133,6 +133,12 @@ const RootLayout = ({ children }: PropsWithChildren) => {
                     className: "font-geist-sans",
                   },
                 },
+                {
+                  text: `Version ${config.appVersion}.${config.appVersionCommit.slice(0, 7)}`,
+                  linkProps: {
+                    href: `${config.repositoryUrl}/commit/${config.appVersionCommit}` as never,
+                  },
+                },
               ]}
               termsLinkProps={{ href: "/mentions-legales" }}
               license={

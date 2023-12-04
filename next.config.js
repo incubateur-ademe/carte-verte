@@ -5,6 +5,8 @@ const { version } = require("./package.json");
 
 const ContentSecurityPolicy = require("./csp.config");
 
+const isDeployment = !!process.env.VERCEL_URL;
+
 /** @type {import('next').NextConfig} */
 const config = {
   poweredByHeader: false,
@@ -25,7 +27,11 @@ const config = {
   },
   env: {
     NEXT_PUBLIC_APP_VERSION: version,
-    NEXT_PUBLIC_APP_VERSION_COMMIT: process.env.GITHUB_SHA || "unknown commit",
+    NEXT_PUBLIC_APP_VERSION_COMMIT: isDeployment ? process.env.VERCEL_GIT_COMMIT_SHA : "dev",
+    NEXT_PUBLIC_REPOSITORY_URL: isDeployment
+      ? `https://github.com/${process.env.VERCEL_GIT_REPO_OWNER}/${process.env.VERCEL_GIT_REPO_SLUG}`
+      : process.env.NEXT_PUBLIC_APP_REPOSITORY_URL ?? "no repository",
+    NEXT_PUBLIC_SITE_URL: isDeployment ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000",
   },
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   async headers() {
