@@ -5,6 +5,7 @@ import { type Metadata } from "next";
 
 import { MdxLink } from "@/components/mdx/Link";
 import { Container } from "@/dsfr";
+import { AnchorLink } from "@/dsfr/client";
 
 import { FooterConsentManagementItem } from "../../consentManagement";
 
@@ -22,21 +23,24 @@ const PolitiqueConfidentialite = () => {
     <Container my="4w">
       <h1>{title}</h1>
       <PolitiqueConfidentialiteTraitementContent />
-      <h2>Hébergement</h2>
+      <AnchorLink anchor="sous-traitants" as="h2">
+        Sous-traitants
+      </AnchorLink>
       <Table
         bordered
-        headers={["Partenaire", "Pays destinataire", "Traitement réalisé", "Garantie"]}
+        headers={["Partenaire", "Pays destinataire", "Pays d'hébergement", "Traitement réalisé", "Garantie"]}
         data={[
           [
-            "Microsoft Azure",
-            "France",
+            "Vercel",
+            "États-Unis",
+            "France (AWS cdg1)",
             "Hébergement",
             <MdxLink
-              key="microsoft-azure"
-              title="Déclaration de confidentialité Microsoft"
-              href="https://privacy.microsoft.com/fr-fr/privacystatement"
+              key="vercel"
+              title="Déclaration de confidentialité Vercel"
+              href="https://vercel.com/legal/privacy-policy"
             >
-              Déclaration de confidentialité Microsoft
+              Déclaration de confidentialité Vercel
             </MdxLink>,
           ],
         ]}

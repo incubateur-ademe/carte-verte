@@ -32,7 +32,7 @@ const description =
   "Carte Verte s’inscrit dans un objectif de politique publique de réduction de l’empreinte environnementale des français et pose le constat suivant : l’empreinte environnementale de la consommation (“je mange”, “j’achète”) des citoyens est trop élevée et peu de dispositifs existent pour l’abaisser (contrairement aux champs des transports et du logement).";
 
 const operatorLogo: HeaderProps["operatorLogo"] = {
-  imgUrl: "https://raw.githubusercontent.com/incubateur-ademe/.github/main/ademe-logo-2022-1.svg",
+  imgUrl: "/ademe-logo-2022-1.svg",
   alt: "ADEME",
   orientation: "vertical",
 };
@@ -113,6 +113,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
             <Footer
               id={footerId}
               accessibility="non compliant"
+              accessibilityLinkProps={{ href: "/accessibilite" }}
               contentDescription={`${config.name} est un service développé par l'accélérateur de la transition écologique de l'ADEME.`}
               operatorLogo={operatorLogo}
               bottomItems={[
