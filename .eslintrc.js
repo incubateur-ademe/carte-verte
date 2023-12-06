@@ -13,6 +13,7 @@ const nextFiles = [
   "icon",
   "apple-icon",
   "sitemap",
+  "robots",
 ].join("|");
 
 /** @type {import("eslint").Linter.Config} */
@@ -195,9 +196,16 @@ const config = {
       },
     },
     {
-      files: ["src/pages/**/*.ts?(x)", `src/app/**/+(${nextFiles}).tsx`],
+      files: ["src/pages/**/*.ts?(x)", `src/app/**/+(${nextFiles}).ts?(x)`],
       rules: {
         "import/no-default-export": "off",
+      },
+    },
+    {
+      files: ["scripts/**/*.ts"],
+      parserOptions: {
+        project: "./scripts/tsconfig.json",
+        tsconfigRootDir: __dirname,
       },
     },
   ],

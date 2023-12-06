@@ -53,3 +53,6 @@ robots.txt
 !.yarn/versions
 
 /public/dsfr/
+
+/public/sitemap.xml
+/public/sitemap*.xml

@@ -11,10 +11,13 @@
     "dev": "next dev",
     "prebuild": "only-include-used-icons",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint",
     "export": "next export",
-    "build:export": "npm run build && npm run export"
+    "build:export": "npm run build && npm run export",
+    "run-script": "ts-node --project scripts/tsconfig.json",
+    "generateEnvDeclaration": "yarn run-script scripts/generateEnvDeclaration.ts"
   },
   "dependencies": {
     "@codegouvfr/react-dsfr": "^1.0.1",
@@ -25,6 +28,7 @@
     "@types/mdx": "^2.0.10",
     "geist": "^1.2.0",
     "next": "^14.0.3",
+    "next-sitemap": "^4.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.69.5",
@@ -36,12 +40,14 @@
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.1.2",
     "@tsconfig/next": "^2.0.1",
+    "@types/dotenv": "^8.2.0",
     "@types/node": "^20.10.2",
     "@types/react": "^18.2.41",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.13.1",
     "@typescript-eslint/parser": "^6.13.1",
     "autoprefixer": "^10.4.16",
+    "dotenv": "^16.3.1",
     "eslint": "^8.55.0",
     "eslint-config-next": "^14.0.3",
     "eslint-config-prettier": "^9.1.0",
@@ -55,6 +61,7 @@
     "postcss": "^8.4.32",
     "prettier": "^3.1.0",
     "tailwindcss": "^3.3.5",
+    "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.3.2"
   }
