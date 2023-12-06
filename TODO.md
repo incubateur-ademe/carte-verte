@@ -1,11 +1,11 @@
 - [x] migration app dir
-- [ ] content
-- [ ] sitemap.xml (kill scripts/prebuild.ts)
-- [ ] robots.txt
-- [ ] favicon.ico
+- [x] sitemap.xml (kill scripts/prebuild.ts)
+- [x] robots.txt
+- [x] favicon.ico
 - [x] mdx
-- [ ] deploy (vercel or scalingo)
+- [x] deploy (vercel or scalingo)
 - [ ] sentry
 - [ ] fin matomo
 - [ ] save base template
+- [ ] content
 - [ ] landing carte verte

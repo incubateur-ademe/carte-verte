@@ -1,15 +1,13 @@
-const ContentSecurityPolicy = `default-src 'self' https://*.gouv.fr;
+const ContentSecurityPolicy = `default-src 'none';
 connect-src 'self' https://*.gouv.fr ${process.env.CARTE_VERTE_ENV === "preprod" ? "https://vercel.live" : ""};
-font-src 'self' data: blob:;
-media-src 'self' https://*.gouv.fr;
-img-src 'self' data: https://*.gouv.fr;
-script-src 'self' https://*.gouv.fr ${
+font-src 'self';
+media-src 'self';
+img-src 'self' data:;
+script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr ${
   process.env.CARTE_VERTE_ENV === "preprod" ? "https://vercel.live" : ""
-} 'unsafe-inline' ${process.env.NODE_ENV === "development" ? "'unsafe-eval'" : ""};
-frame-src 'self' https://*.gouv.fr;
-style-src 'self' https://*.gouv.fr 'unsafe-inline';
-frame-ancestors 'self' https://*.gouv.fr;
-object-src 'none';
+} ${process.env.NODE_ENV === "development" ? "'unsafe-eval'" : ""};
+style-src 'self' 'unsafe-inline';
+frame-ancestors 'self';
 base-uri 'self' https://*.gouv.fr;
 form-action 'self' https://*.gouv.fr;
 block-all-mixed-content;
