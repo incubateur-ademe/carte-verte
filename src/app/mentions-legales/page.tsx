@@ -2,6 +2,7 @@ import MentionsLegalesContent from "@__content/mentions-legales.mdx";
 import { type Metadata } from "next";
 
 import { Container } from "@/dsfr";
+import { anchorHeadingMDXComponents } from "@/mdx-components";
 
 const title = "Mentions légales";
 export const metadata: Metadata = {
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 const MentionsLegales = () => (
   <Container my="4w">
     <h1>{title}</h1>
-    <MentionsLegalesContent />
+    <MentionsLegalesContent components={anchorHeadingMDXComponents} />
   </Container>
 );
 

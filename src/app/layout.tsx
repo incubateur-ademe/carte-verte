@@ -32,7 +32,7 @@ const description =
   "Carte Verte s’inscrit dans un objectif de politique publique de réduction de l’empreinte environnementale des français et pose le constat suivant : l’empreinte environnementale de la consommation (“je mange”, “j’achète”) des citoyens est trop élevée et peu de dispositifs existent pour l’abaisser (contrairement aux champs des transports et du logement).";
 
 const operatorLogo: HeaderProps["operatorLogo"] = {
-  imgUrl: "/ademe-logo-2022-1.svg",
+  imgUrl: "/img/ademe-logo-2022-1.svg",
   alt: "ADEME",
   orientation: "vertical",
 };
@@ -104,7 +104,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
                 title: `Accueil - ${config.name}`,
               }}
               serviceTitle={config.name}
-              serviceTagline={config.tagline}
+              // serviceTagline={config.tagline}
               operatorLogo={operatorLogo}
             />
             <main role="main" id={contentId} className={style.content}>

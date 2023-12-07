@@ -6,6 +6,7 @@ import { type Metadata } from "next";
 import { MdxLink } from "@/components/mdx/Link";
 import { Container } from "@/dsfr";
 import { AnchorLink } from "@/dsfr/client";
+import { anchorHeadingMDXComponents } from "@/mdx-components";
 
 import { FooterConsentManagementItem } from "../../consentManagement";
 
@@ -22,7 +23,7 @@ const PolitiqueConfidentialite = () => {
   return (
     <Container my="4w">
       <h1>{title}</h1>
-      <PolitiqueConfidentialiteTraitementContent />
+      <PolitiqueConfidentialiteTraitementContent components={anchorHeadingMDXComponents} />
       <AnchorLink anchor="sous-traitants" as="h2">
         Sous-traitants
       </AnchorLink>
@@ -47,6 +48,7 @@ const PolitiqueConfidentialite = () => {
       />
       <PolitiqueConfidentialiteCookiesContent
         components={{
+          ...anchorHeadingMDXComponents,
           CookiesTable: () => (
             <Table
               bordered

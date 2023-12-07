@@ -26,7 +26,7 @@ const config = {
     ignoreDuringBuilds: true,
   },
   env: {
-    NEXT_TELEMETRY_DISABLED: 1,
+    NEXT_TELEMETRY_DISABLED: "1",
     NEXT_PUBLIC_APP_VERSION: version,
     NEXT_PUBLIC_APP_VERSION_COMMIT: isDeployment ? process.env.VERCEL_GIT_COMMIT_SHA : "dev",
     NEXT_PUBLIC_REPOSITORY_URL: isDeployment
