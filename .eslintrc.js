@@ -190,6 +190,7 @@ const config = {
           {
             prefer: "type-imports",
             fixStyle: "inline-type-imports",
+            disallowTypeAnnotations: false,
           },
         ],
         "@typescript-eslint/sort-type-constituents": "warn",

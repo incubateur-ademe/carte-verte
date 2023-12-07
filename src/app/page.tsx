@@ -1,14 +1,16 @@
 import HeroBlocContent from "@__content/landing/hero_bloc.mdx";
 import HeroTitleContent from "@__content/landing/hero_title.mdx";
 
-import { ImgCard } from "@/components/img/ImgCard";
 import { config } from "@/config";
-import { Box, Container, Grid, GridCol } from "@/dsfr";
+import { Box, Container } from "@/dsfr";
 
-import { CTA } from "./CTA";
+import { loadBlocs } from "./_landing/blocs/blocLoader";
+import { LandingHeroDesktop } from "./_landing/hero/desktop";
+import { LandingHeroMobile } from "./_landing/hero/mobile";
 import style from "./index.module.scss";
 
-const Home = () => {
+const Home = async () => {
+  await loadBlocs();
   if (config.env === "prod") {
     return (
       <Container my="2w">
@@ -20,36 +22,8 @@ const Home = () => {
   return (
     <>
       <Box pt="9w" pb="4w" className={style.hero}>
-        <Container>
-          <Grid haveGutters className="hidden md:flex">
-            <GridCol base={7} className="fr-my-auto">
-              <HeroTitleContent />
-              <HeroBlocContent />
-              <CTA source="hero" title="Je veux recevoir ma Carte Verte">
-                Je veux recevoir ma Carte Verte
-              </CTA>
-            </GridCol>
-            <GridCol base={5} className="fr-mx-auto">
-              <ImgCard />
-            </GridCol>
-          </Grid>
-          <Box className="md:hidden">
-            <Grid haveGutters>
-              <GridCol>
-                <HeroTitleContent />
-              </GridCol>
-              <GridCol base={10} offset={1}>
-                <ImgCard />
-              </GridCol>
-              <GridCol>
-                <HeroBlocContent />
-              </GridCol>
-            </Grid>
-            <CTA source="hero" title="Je veux recevoir ma Carte Verte" asGroup>
-              Je veux recevoir ma Carte Verte
-            </CTA>
-          </Box>
-        </Container>
+        <LandingHeroDesktop title={<HeroTitleContent />} bloc={<HeroBlocContent />} />
+        <LandingHeroMobile title={<HeroTitleContent />} bloc={<HeroBlocContent />} />
       </Box>
       <Container my="4w"></Container>
     </>
