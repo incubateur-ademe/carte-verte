@@ -10,6 +10,7 @@ import { Box, Container } from "@/dsfr";
 import { Landing3AlternatedBloc } from "./_landing/blocs/3-alternated";
 import { loadBlocs } from "./_landing/blocs/blocLoader";
 import { LandingSingleImageBloc } from "./_landing/blocs/single-image";
+import { LandingTextOnlyBloc } from "./_landing/blocs/text-only";
 import { LandingHero } from "./_landing/hero";
 import style from "./index.module.scss";
 
@@ -47,6 +48,8 @@ const Home = async () => {
                     <Landing3AlternatedBloc mobile id={id} metadata={metadata} titleComponent={titleComponent} />
                   </Fragment>
                 );
+              case "text-only":
+                return <LandingTextOnlyBloc key={id} id={id} metadata={metadata} titleComponent={titleComponent} />;
               default:
                 return null;
             }
