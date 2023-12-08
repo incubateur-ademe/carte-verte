@@ -18,8 +18,6 @@ declare type CarteVerteMDXLandingMetadata = { cta?: string } & (
         second: CarteVerteMDXImage;
         third: CarteVerteMDXImage;
       };
-      /** @default "vertical" */
-      orientation?: "horizontal" | "vertical";
       type: "3-alternated";
     }
   | {
