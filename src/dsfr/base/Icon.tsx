@@ -5,7 +5,7 @@ import { isBrowser } from "@/utils/browser";
 
 import { type TextColorStyle } from "../utils/color-styles";
 import { IconStyleJsx } from "./client/IconStyleJsx";
-import style from "./Icon.module.scss";
+import styles from "./Icon.module.scss";
 
 export type IconProps = {
   className?: CxArg;
@@ -79,12 +79,12 @@ export const Icon = ({
     className={cx(
       icon,
       className,
-      style["fr-icon"],
-      size && style[`fr-icon--${size}`],
-      onClick && style["fr-icon--clickable"],
-      iconPosition && style[`fr-icon--${iconPosition}`],
-      valign && style[`fr-icon--valign-${valign}`],
-      align && style[`fr-icon--align-${align}`],
+      styles["fr-icon"],
+      size && styles[`fr-icon--${size}`],
+      onClick && styles["fr-icon--clickable"],
+      iconPosition && styles[`fr-icon--${iconPosition}`],
+      valign && styles[`fr-icon--valign-${valign}`],
+      align && styles[`fr-icon--align-${align}`],
     )}
     aria-hidden={text ? "false" : "true"}
   >

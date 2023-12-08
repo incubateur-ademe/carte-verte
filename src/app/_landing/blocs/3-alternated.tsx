@@ -70,7 +70,7 @@ const Landing3AlternatedBlocMobile = ({ contents, title, images }: SubProps) => 
   </Container>
 );
 
-const Landing3AlternatedBlocDesktop = ({ contents, title, images, metadata }: SubProps) => (
+const Landing3AlternatedBlocDesktop = ({ contents, title, images }: SubProps) => (
   <Container className="hidden md:flex">
     <Grid haveGutters>
       <GridCol>{title}</GridCol>

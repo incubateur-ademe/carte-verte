@@ -6,15 +6,15 @@ type Imported = MDXTitle & {
 };
 
 export const loadBlocs = async () => {
-  const contents = (await readdir("content/landing/content", { withFileTypes: true }))
+  const ids = (await readdir("content/landing/content", { withFileTypes: true }))
     .filter(dirent => dirent.isDirectory())
     .map(dirent => dirent.name);
 
   const imported = (
     await Promise.all(
-      contents.map<Promise<Imported>>(async contentFolder => ({
-        ...((await import(`@__content/landing/content/${contentFolder}/title.mdx`)) as MDXTitle),
-        id: contentFolder,
+      ids.map<Promise<Imported>>(async id => ({
+        ...((await import(`@__content/landing/content/${id}/title.mdx`)) as MDXTitle),
+        id,
       })),
     )
   )

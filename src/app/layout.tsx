@@ -24,7 +24,7 @@ import {
 } from "../consentManagement";
 import { defaultColorScheme } from "../defaultColorScheme";
 import { StartDsfr } from "../StartDsfr";
-import style from "./root.module.scss";
+import styles from "./root.module.scss";
 
 const contentId = "content";
 const footerId = "footer";
@@ -58,7 +58,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
     <html
       lang="fr"
       {...getHtmlAttributes({ defaultColorScheme, lang: "fr" })}
-      className={cx(GeistSans.variable, style.app)}
+      className={cx(GeistSans.variable, styles.app)}
     >
       <head>
         <StartDsfr />
@@ -96,7 +96,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
               },
             ]}
           />
-          <div className={style.app}>
+          <div className={styles.app}>
             <Header
               brandTop={<Brand />}
               homeLinkProps={{
@@ -107,7 +107,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
               // serviceTagline={config.tagline}
               operatorLogo={operatorLogo}
             />
-            <main role="main" id={contentId} className={style.content}>
+            <main role="main" id={contentId} className={styles.content}>
               {children}
             </main>
             <Footer

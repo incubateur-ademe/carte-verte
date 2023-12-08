@@ -25,8 +25,20 @@ declare type CarteVerteMDXLandingMetadata = { cta?: string } & (
     }
 );
 
+declare type CarteVerteFAQMDXMetadata = {
+  readonly question: string;
+};
+
+declare type MDXContent = typeof import("*.mdx").default;
+
 declare module "@__content/landing/content/*/title.mdx" {
-  const MDXComponent: typeof import("*.mdx").default;
-  export default MDXComponent;
+  const MDXContent: MDXContent;
+  export default MDXContent;
   export const metadata: CarteVerteMDXLandingMetadata;
+}
+
+declare module "@__content/landing/faq/*.mdx" {
+  const MDXContent: MDXContent;
+  export default MDXContent;
+  export const metadata: CarteVerteFAQMDXMetadata;
 }

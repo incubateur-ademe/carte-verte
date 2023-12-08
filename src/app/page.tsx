@@ -5,17 +5,19 @@ import { cx } from "@codegouvfr/react-dsfr/tools/cx";
 import { Fragment } from "react";
 
 import { config } from "@/config";
-import { Box, Container } from "@/dsfr";
+import { Box, CenteredContainer, Container } from "@/dsfr";
+import { CollapsedSectionDynamicGroup } from "@/dsfr/base/client/CollapsedSectionDynamicGroup";
 
 import { Landing3AlternatedBloc } from "./_landing/blocs/3-alternated";
 import { loadBlocs } from "./_landing/blocs/blocLoader";
 import { LandingSingleImageBloc } from "./_landing/blocs/single-image";
 import { LandingTextOnlyBloc } from "./_landing/blocs/text-only";
+import { loadFaq } from "./_landing/faq/faqLoader";
 import { LandingHero } from "./_landing/hero";
-import style from "./index.module.scss";
+import styles from "./index.module.scss";
 
 const Home = async () => {
-  const imported = await loadBlocs();
+  const [blocs, faqQuestions] = await Promise.all([loadBlocs(), loadFaq()]);
   if (config.env === "prod") {
     return (
       <Container my="2w">
@@ -26,12 +28,12 @@ const Home = async () => {
 
   return (
     <>
-      <Box pb="4w" className={cx(style.hero, fr.cx("fr-pt-md-9w", "fr-pt-2w", "fr-mb-0"))}>
+      <Box as="section" pb="4w" className={cx(styles.hero, fr.cx("fr-pt-md-9w", "fr-pt-2w", "fr-mb-0"))}>
         <LandingHero title={<HeroTitleContent />} bloc={<HeroBlocContent />} />
         <LandingHero mobile title={<HeroTitleContent />} bloc={<HeroBlocContent />} />
       </Box>
-      {imported.map(({ titleComponent, metadata, id }) => (
-        <Container py="4w" className="fr-hr" key={id} fluid>
+      {blocs.map(({ titleComponent, metadata, id }) => (
+        <Container as="section" py="4w" className="fr-hr" key={id} fluid>
           {(() => {
             switch (metadata.type) {
               case "single-image":
@@ -56,6 +58,18 @@ const Home = async () => {
           })()}
         </Container>
       ))}
+      <Box as="section" className="fr-hr">
+        <CenteredContainer className="fr-py-6w fr-py-md-12w">
+          <h2>FAQ</h2>
+          <CollapsedSectionDynamicGroup
+            data={faqQuestions.map(({ id, metadata, questionComponent: Question }) => ({
+              id,
+              content: <Question />,
+              title: metadata.question,
+            }))}
+          />
+        </CenteredContainer>
+      </Box>
     </>
   );
 };
