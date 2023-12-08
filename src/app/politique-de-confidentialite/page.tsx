@@ -11,11 +11,16 @@ import { anchorHeadingMDXComponents } from "@/mdx-components";
 import { FooterConsentManagementItem } from "../../consentManagement";
 
 const title = "Politique de confidentialité";
+const url = "/politique-de-confidentialite";
 
 export const metadata: Metadata = {
   title,
   openGraph: {
     title,
+    url,
+  },
+  alternates: {
+    canonical: url,
   },
 };
 

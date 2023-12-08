@@ -5,10 +5,15 @@ import { Container } from "@/dsfr";
 import { anchorHeadingMDXComponents } from "@/mdx-components";
 
 const title = "Déclaration d'accessibilité";
+const url = "/accessibilite";
 export const metadata: Metadata = {
   title,
   openGraph: {
     title,
+    url,
+  },
+  alternates: {
+    canonical: url,
   },
 };
 

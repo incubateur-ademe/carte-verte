@@ -2,6 +2,7 @@ import HeroBlocContent from "@__content/landing/hero_bloc.mdx";
 import HeroTitleContent from "@__content/landing/hero_title.mdx";
 import { fr } from "@codegouvfr/react-dsfr";
 import { cx } from "@codegouvfr/react-dsfr/tools/cx";
+import { type Metadata } from "next";
 import { Fragment } from "react";
 
 import { config } from "@/config";
@@ -15,6 +16,17 @@ import { LandingTextOnlyBloc } from "./_landing/blocs/text-only";
 import { loadFaq } from "./_landing/faq/faqLoader";
 import { LandingHero } from "./_landing/hero";
 import styles from "./index.module.scss";
+
+const url = "/";
+
+export const metadata: Metadata = {
+  openGraph: {
+    url: "/",
+  },
+  alternates: {
+    canonical: url,
+  },
+};
 
 const Home = async () => {
   const [blocs, faqQuestions] = await Promise.all([loadBlocs(), loadFaq()]);

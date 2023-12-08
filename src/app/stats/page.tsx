@@ -6,6 +6,7 @@ import { StatsContent } from "./content";
 
 const title = "Statistiques d'utilisation";
 const description = "Statistiques d'utilisation de la plateforme";
+const url = "/stats";
 
 export const metadata: Metadata = {
   title,
@@ -13,6 +14,10 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description,
+    url,
+  },
+  alternates: {
+    canonical: url,
   },
 };
 
