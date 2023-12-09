@@ -15,13 +15,14 @@ import { LandingSingleImageBloc } from "./_landing/blocs/single-image";
 import { LandingTextOnlyBloc } from "./_landing/blocs/text-only";
 import { loadFaq } from "./_landing/faq/faqLoader";
 import { LandingHero } from "./_landing/hero";
+import { CTA } from "./CTA";
 import styles from "./index.module.scss";
 
 const url = "/";
 
 export const metadata: Metadata = {
   openGraph: {
-    url: "/",
+    url,
   },
   alternates: {
     canonical: url,
@@ -71,15 +72,20 @@ const Home = async () => {
         </Container>
       ))}
       <Box as="section" className="fr-hr">
-        <CenteredContainer className="fr-py-6w fr-py-md-12w">
+        <CenteredContainer className="fr-pt-6w fr-pt-md-12w">
           <h2>FAQ</h2>
           <CollapsedSectionDynamicGroup
+            className="fr-mb-6w"
             data={faqQuestions.map(({ id, metadata, questionComponent: Question }) => ({
               id,
               content: <Question />,
               title: metadata.question,
             }))}
           />
+
+          <CTA source="faq" title="Je souhaite recevoir ma Carte Verte" asGroup>
+            Je souhaite recevoir ma Carte Verte
+          </CTA>
         </CenteredContainer>
       </Box>
     </>

@@ -1,3 +1,4 @@
+import { CTA } from "@/app/CTA";
 import { Container, Grid, GridCol } from "@/dsfr";
 
 import { type MDXBlocProps } from "./type";
@@ -14,7 +15,7 @@ export const LandingTextOnlyBloc = async ({
   const Content = ((await import(`@__content/landing/content/${id}/bloc.mdx`)) as typeof import("*.mdx")).default;
 
   return (
-    <Container my="4w">
+    <Container>
       <Grid haveGutters>
         <GridCol>
           <TitleComponent />
@@ -22,6 +23,13 @@ export const LandingTextOnlyBloc = async ({
         <GridCol className="fr-px-md-4w fr-px-2w">
           <Content />
         </GridCol>
+        {metadata.cta && (
+          <GridCol>
+            <CTA source={metadata.cta} title={metadata.cta} asGroup>
+              {metadata.cta}
+            </CTA>
+          </GridCol>
+        )}
       </Grid>
     </Container>
   );

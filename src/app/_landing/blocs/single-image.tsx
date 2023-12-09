@@ -2,6 +2,7 @@ import { cx } from "@codegouvfr/react-dsfr/tools/cx";
 import Image from "next/image";
 import { type ReactNode } from "react";
 
+import { CTA } from "@/app/CTA";
 import { Box, Container, Grid, GridCol } from "@/dsfr";
 
 import { type MDXBlocProps } from "./type";
@@ -35,23 +36,35 @@ interface SubProps {
   title: ReactNode;
 }
 
-const LandingSingleImageBlocMobile = ({ content, title, image }: SubProps) => (
-  <Container my="4w" className="md:hidden">
+const LandingSingleImageBlocMobile = ({ content, title, image, metadata }: SubProps) => (
+  <Container className="md:hidden">
     <Grid haveGutters>
       <GridCol>{title}</GridCol>
       <GridCol>{image}</GridCol>
       <GridCol>{content}</GridCol>
+      {metadata.cta && (
+        <GridCol>
+          <CTA source={metadata.cta} title={metadata.cta} asGroup>
+            {metadata.cta}
+          </CTA>
+        </GridCol>
+      )}
     </Grid>
   </Container>
 );
 
 const LandingSingleImageBlocDesktop = ({ content, title, image, metadata }: SubProps) => (
-  <Container my="4w" className="hidden md:flex">
+  <Container className="hidden md:flex">
     <Grid haveGutters className={cx(metadata.image.position === "right" && "flex-row-reverse")}>
       <GridCol base={5}>{image}</GridCol>
       <GridCol base={7}>
         {title}
         <Box className="fr-py-4w">{content}</Box>
+        {metadata.cta && (
+          <CTA source={metadata.cta} title={metadata.cta}>
+            {metadata.cta}
+          </CTA>
+        )}
       </GridCol>
     </Grid>
   </Container>

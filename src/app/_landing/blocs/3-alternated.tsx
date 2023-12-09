@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { type ReactNode } from "react";
 
+import { CTA } from "@/app/CTA";
 import { Container, Grid, GridCol } from "@/dsfr";
 
 import { type MDXBlocProps } from "./type";
@@ -56,7 +57,7 @@ interface SubProps {
   title: ReactNode;
 }
 
-const Landing3AlternatedBlocMobile = ({ contents, title, images }: SubProps) => (
+const Landing3AlternatedBlocMobile = ({ contents, title, images, metadata }: SubProps) => (
   <Container className="md:hidden">
     <Grid haveGutters>
       <GridCol>{title}</GridCol>
@@ -67,10 +68,15 @@ const Landing3AlternatedBlocMobile = ({ contents, title, images }: SubProps) => 
       <GridCol>{images.third}</GridCol>
       <GridCol>{contents.third}</GridCol>
     </Grid>
+    {metadata.cta && (
+      <CTA source={metadata.cta} title={metadata.cta} asGroup>
+        {metadata.cta}
+      </CTA>
+    )}
   </Container>
 );
 
-const Landing3AlternatedBlocDesktop = ({ contents, title, images }: SubProps) => (
+const Landing3AlternatedBlocDesktop = ({ contents, title, images, metadata }: SubProps) => (
   <Container className="hidden md:flex">
     <Grid haveGutters>
       <GridCol>{title}</GridCol>
@@ -80,6 +86,13 @@ const Landing3AlternatedBlocDesktop = ({ contents, title, images }: SubProps) =>
       <GridCol base={4}>{contents.first}</GridCol>
       <GridCol base={4}>{contents.second}</GridCol>
       <GridCol base={4}>{contents.third}</GridCol>
+      {metadata.cta && (
+        <GridCol>
+          <CTA source={metadata.cta} title={metadata.cta} asGroup>
+            {metadata.cta}
+          </CTA>
+        </GridCol>
+      )}
     </Grid>
   </Container>
 );
