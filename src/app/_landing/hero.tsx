@@ -1,27 +1,40 @@
-import { type ReactNode } from "react";
-
 import { CTA } from "@/app/CTA";
 import { ImgCard } from "@/components/img/ImgCard";
 import { Container, Grid, GridCol } from "@/dsfr";
 
+import { type MDXBlocProps } from "./blocs/type";
+
+const DEFAULT_CTA_SOURCE = "hero";
+
 export interface LandingHeroProps {
-  bloc: ReactNode;
-  title: ReactNode;
+  blocComponent: MDXBlocProps["titleComponent"];
+  metadata: CarteVerteHeroMDXMetadata;
+  titleComponent: MDXBlocProps["titleComponent"];
 }
 
-export const ctaString = "Je veux recevoir ma Carte Verte";
-export const LandingHero = ({ bloc, title, mobile }: LandingHeroProps & { mobile?: boolean }) => (
-  <>{mobile ? <LandingHeroMobile bloc={bloc} title={title} /> : <LandingHeroDesktop bloc={bloc} title={title} />}</>
+export const LandingHero = ({
+  blocComponent: bloc,
+  titleComponent: title,
+  metadata,
+  mobile,
+}: LandingHeroProps & { mobile?: boolean }) => (
+  <>
+    {mobile ? (
+      <LandingHeroMobile metadata={metadata} blocComponent={bloc} titleComponent={title} />
+    ) : (
+      <LandingHeroDesktop metadata={metadata} blocComponent={bloc} titleComponent={title} />
+    )}
+  </>
 );
 
-const LandingHeroDesktop = ({ bloc, title }: LandingHeroProps) => (
+const LandingHeroDesktop = ({ blocComponent: Bloc, titleComponent: Title, metadata }: LandingHeroProps) => (
   <Container className="hidden md:flex">
     <Grid haveGutters>
       <GridCol base={7} className="fr-my-auto">
-        {title}
-        {bloc}
-        <CTA source="hero" title={ctaString}>
-          {ctaString}
+        <Title />
+        <Bloc />
+        <CTA source={metadata.cta?.source ?? DEFAULT_CTA_SOURCE} title={metadata.cta?.title} href={metadata.cta?.href}>
+          {metadata.cta?.title}
         </CTA>
       </GridCol>
       <GridCol base={5} className="fr-mx-auto">
@@ -31,17 +44,26 @@ const LandingHeroDesktop = ({ bloc, title }: LandingHeroProps) => (
   </Container>
 );
 
-const LandingHeroMobile = ({ bloc, title }: LandingHeroProps) => (
+const LandingHeroMobile = ({ blocComponent: Bloc, titleComponent: Title, metadata }: LandingHeroProps) => (
   <Container className="md:hidden">
     <Grid haveGutters>
-      <GridCol>{title}</GridCol>
+      <GridCol>
+        <Title />
+      </GridCol>
       <GridCol base={10} offset={1}>
         <ImgCard />
       </GridCol>
-      <GridCol>{bloc}</GridCol>
+      <GridCol>
+        <Bloc />
+      </GridCol>
     </Grid>
-    <CTA source="hero" title={ctaString} asGroup>
-      {ctaString}
+    <CTA
+      source={metadata.cta?.source ?? DEFAULT_CTA_SOURCE}
+      title={metadata.cta?.title}
+      href={metadata.cta?.href}
+      asGroup
+    >
+      {metadata.cta?.title}
     </CTA>
   </Container>
 );

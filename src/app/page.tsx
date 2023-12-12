@@ -1,5 +1,5 @@
 import HeroBlocContent from "@__content/landing/hero_bloc.mdx";
-import HeroTitleContent from "@__content/landing/hero_title.mdx";
+import HeroTitleContent, { metadata as heroMetadata } from "@__content/landing/hero_title.mdx";
 import { fr } from "@codegouvfr/react-dsfr";
 import { cx } from "@codegouvfr/react-dsfr/tools/cx";
 import { type Metadata } from "next";
@@ -16,6 +16,7 @@ import { LandingTextOnlyBloc } from "./_landing/blocs/text-only";
 import { loadFaq } from "./_landing/faq/faqLoader";
 import { LandingHero } from "./_landing/hero";
 import { CTA } from "./CTA";
+import { ErrorDisplay } from "./ErrorDisplay";
 import styles from "./index.module.scss";
 
 const url = "/";
@@ -30,20 +31,17 @@ export const metadata: Metadata = {
 };
 
 const Home = async () => {
-  const [blocs, faqQuestions] = await Promise.all([loadBlocs(), loadFaq()]);
   if (config.env === "prod") {
-    return (
-      <Container my="2w">
-        <h1>{config.name} est toujours en construction.</h1>
-      </Container>
-    );
+    return <ErrorDisplay code="construction" noRedirect />;
   }
+
+  const [blocs, faqQuestions] = await Promise.all([loadBlocs(), loadFaq()]);
 
   return (
     <>
       <Box as="section" pb="4w" className={cx(styles.hero, fr.cx("fr-pt-md-9w", "fr-pt-2w", "fr-mb-0"))}>
-        <LandingHero title={<HeroTitleContent />} bloc={<HeroBlocContent />} />
-        <LandingHero mobile title={<HeroTitleContent />} bloc={<HeroBlocContent />} />
+        <LandingHero metadata={heroMetadata} titleComponent={HeroTitleContent} blocComponent={HeroBlocContent} />
+        <LandingHero mobile metadata={heroMetadata} titleComponent={HeroTitleContent} blocComponent={HeroBlocContent} />
       </Box>
       {blocs.map(({ titleComponent, metadata, id }) => (
         <Container as="section" py="4w" className="fr-hr" key={id} fluid>
@@ -83,9 +81,7 @@ const Home = async () => {
             }))}
           />
 
-          <CTA source="faq" title="Je souhaite recevoir ma Carte Verte" asGroup>
-            Je souhaite recevoir ma Carte Verte
-          </CTA>
+          <CTA source="faq" asGroup />
         </CenteredContainer>
       </Box>
     </>

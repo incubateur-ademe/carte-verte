@@ -1,5 +1,6 @@
 import "./global.css";
 
+import { Badge } from "@codegouvfr/react-dsfr/Badge";
 import { headerFooterDisplayItem } from "@codegouvfr/react-dsfr/Display";
 import { Footer } from "@codegouvfr/react-dsfr/Footer";
 import { Header, type HeaderProps } from "@codegouvfr/react-dsfr/Header";
@@ -103,7 +104,14 @@ const RootLayout = ({ children }: PropsWithChildren) => {
                 href: "/",
                 title: `Accueil - ${config.name}`,
               }}
-              serviceTitle={config.name}
+              serviceTitle={
+                <>
+                  {config.name}{" "}
+                  <Badge as="span" noIcon severity="success">
+                    Beta
+                  </Badge>
+                </>
+              }
               // serviceTagline={config.tagline}
               operatorLogo={operatorLogo}
             />

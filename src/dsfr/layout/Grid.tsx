@@ -3,11 +3,14 @@ import { cx, type CxArg } from "@codegouvfr/react-dsfr/tools/cx";
 import { forwardRef, type PropsWithChildren } from "react";
 
 import { Box, BoxRef } from "@/dsfr";
+import { type OmitStartsWith } from "@/utils/types";
 
-import { type MarginProps } from "../utils/spacing";
+import { type MarginProps, type PaddingProps } from "../utils/spacing";
+
+type MarginPropsVertical = OmitStartsWith<MarginProps, "ml" | "mr" | "mx">;
 
 export type GridProps = PropsWithChildren<
-  Omit<MarginProps, "ml" | "mr" | "mx"> & {
+  MarginPropsVertical & {
     align?: "center" | "left" | "right";
     className?: CxArg;
     haveGutters?: boolean;
@@ -39,19 +42,21 @@ Grid.displayName = "Grid";
 
 type ColsNumberType = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
-export type GridColProps = PropsWithChildren & {
-  base?: ColsNumberType | `${ColsNumberType}`;
-  className?: CxArg;
-  lg?: ColsNumberType | `${ColsNumberType}`;
-  md?: ColsNumberType | `${ColsNumberType}`;
-  offset?: ColsNumberType | `${ColsNumberType}`;
-  offsetLg?: ColsNumberType | `${ColsNumberType}`;
-  offsetMd?: ColsNumberType | `${ColsNumberType}`;
-  offsetSm?: ColsNumberType | `${ColsNumberType}`;
-  offsetXl?: ColsNumberType | `${ColsNumberType}`;
-  sm?: ColsNumberType | `${ColsNumberType}`;
-  xl?: ColsNumberType | `${ColsNumberType}`;
-};
+export type GridColProps = MarginPropsVertical &
+  PaddingProps &
+  PropsWithChildren & {
+    base?: ColsNumberType | `${ColsNumberType}`;
+    className?: CxArg;
+    lg?: ColsNumberType | `${ColsNumberType}`;
+    md?: ColsNumberType | `${ColsNumberType}`;
+    offset?: ColsNumberType | `${ColsNumberType}`;
+    offsetLg?: ColsNumberType | `${ColsNumberType}`;
+    offsetMd?: ColsNumberType | `${ColsNumberType}`;
+    offsetSm?: ColsNumberType | `${ColsNumberType}`;
+    offsetXl?: ColsNumberType | `${ColsNumberType}`;
+    sm?: ColsNumberType | `${ColsNumberType}`;
+    xl?: ColsNumberType | `${ColsNumberType}`;
+  };
 
 export const GridCol = ({
   base = 12,

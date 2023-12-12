@@ -44,8 +44,8 @@ const LandingSingleImageBlocMobile = ({ content, title, image, metadata }: SubPr
       <GridCol>{content}</GridCol>
       {metadata.cta && (
         <GridCol>
-          <CTA source={metadata.cta} title={metadata.cta} asGroup>
-            {metadata.cta}
+          <CTA source={metadata.cta.source} title={metadata.cta.title} asGroup href={metadata.cta.href}>
+            {metadata.cta.title}
           </CTA>
         </GridCol>
       )}
@@ -61,8 +61,8 @@ const LandingSingleImageBlocDesktop = ({ content, title, image, metadata }: SubP
         {title}
         <Box className="fr-py-4w">{content}</Box>
         {metadata.cta && (
-          <CTA source={metadata.cta} title={metadata.cta}>
-            {metadata.cta}
+          <CTA source={metadata.cta.source} title={metadata.cta.title} href={metadata.cta.href}>
+            {metadata.cta.title}
           </CTA>
         )}
       </GridCol>

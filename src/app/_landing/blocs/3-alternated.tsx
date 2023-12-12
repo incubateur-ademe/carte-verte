@@ -69,8 +69,8 @@ const Landing3AlternatedBlocMobile = ({ contents, title, images, metadata }: Sub
       <GridCol>{contents.third}</GridCol>
     </Grid>
     {metadata.cta && (
-      <CTA source={metadata.cta} title={metadata.cta} asGroup>
-        {metadata.cta}
+      <CTA source={metadata.cta.source} title={metadata.cta.title} href={metadata.cta.href} asGroup>
+        {metadata.cta.title}
       </CTA>
     )}
   </Container>
@@ -88,8 +88,8 @@ const Landing3AlternatedBlocDesktop = ({ contents, title, images, metadata }: Su
       <GridCol base={4}>{contents.third}</GridCol>
       {metadata.cta && (
         <GridCol>
-          <CTA source={metadata.cta} title={metadata.cta} asGroup>
-            {metadata.cta}
+          <CTA source={metadata.cta.source} title={metadata.cta.title} href={metadata.cta.href} asGroup>
+            {metadata.cta.title}
           </CTA>
         </GridCol>
       )}

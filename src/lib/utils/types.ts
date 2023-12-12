@@ -273,6 +273,10 @@ export type PropsWithoutChildren<T extends PropsWithChildren> = Omit<T, "childre
 export type RecordValues<T> = T extends Record<Any, infer R> ? R : never;
 export type RecordKeys<T> = T extends Record<infer R, unknown> ? R : never;
 
+export type OmitStartsWith<T, K extends string> = {
+  [Key in keyof T as Key extends `${K}${string}` ? never : Key]: T[Key];
+};
+
 /**
  * Hacky type to remove readonly on each property
  */

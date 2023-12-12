@@ -7,6 +7,7 @@ script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr ${
   process.env.CARTE_VERTE_ENV === "preprod" ? "https://vercel.live" : ""
 } ${process.env.NODE_ENV === "development" ? "'unsafe-eval'" : ""};
 style-src 'self' 'unsafe-inline';
+object-src 'self' data:;
 frame-ancestors 'self';
 base-uri 'self' https://*.gouv.fr;
 form-action 'self' https://*.gouv.fr;

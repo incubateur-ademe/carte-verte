@@ -5,12 +5,24 @@ import ButtonsGroup from "@codegouvfr/react-dsfr/ButtonsGroup";
 import { push } from "@socialgouv/matomo-next";
 import { type PropsWithChildren } from "react";
 
+import { config } from "@/config";
+
+const DEFAULT_CTA_HREF = config.formUrl;
+const DEFAULT_CTA_TITLE = "Je souhaite recevoir ma Carte Verte";
+
 export interface CTAProps {
   asGroup?: boolean;
+  href?: string;
   source: string;
-  title: string;
+  title?: string;
 }
-export const CTA = ({ source, title, children, asGroup }: PropsWithChildren<CTAProps>) => {
+export const CTA = ({
+  source,
+  title = DEFAULT_CTA_TITLE,
+  children = DEFAULT_CTA_TITLE,
+  asGroup,
+  href = DEFAULT_CTA_HREF,
+}: PropsWithChildren<CTAProps>) => {
   const onClick = () => push(["trackEvent", "CTA", "Click", source]);
   return asGroup ? (
     <ButtonsGroup
@@ -19,13 +31,22 @@ export const CTA = ({ source, title, children, asGroup }: PropsWithChildren<CTAP
       buttons={[
         {
           title,
-          onClick,
           children,
+          linkProps: {
+            onClick,
+            href: href as never,
+          },
         },
       ]}
     />
   ) : (
-    <Button title={title} onClick={onClick}>
+    <Button
+      title={title}
+      linkProps={{
+        onClick,
+        href: href as never,
+      }}
+    >
       {children}
     </Button>
   );

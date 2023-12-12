@@ -25,8 +25,8 @@ export const LandingTextOnlyBloc = async ({
         </GridCol>
         {metadata.cta && (
           <GridCol>
-            <CTA source={metadata.cta} title={metadata.cta} asGroup>
-              {metadata.cta}
+            <CTA source={metadata.cta.source} title={metadata.cta.title} href={metadata.cta.href} asGroup>
+              {metadata.cta.title}
             </CTA>
           </GridCol>
         )}
