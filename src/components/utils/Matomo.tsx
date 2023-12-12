@@ -24,7 +24,7 @@ export const Matomo = ({ env, nonce }: MatomoProps) => {
   const [previousPath, setPreviousPath] = useState("");
 
   useEffect(() => {
-    if (env !== "prod") {
+    if (env === "dev") {
       return;
     }
 
@@ -37,6 +37,7 @@ export const Matomo = ({ env, nonce }: MatomoProps) => {
           push(["requireCookieConsent"]);
           push(["enableHeartBeatTimer"]);
           push(["disableQueueRequest"]);
+          push(["disablePerformanceTracking"]);
         },
       });
       setInited(true);
@@ -56,7 +57,7 @@ export const Matomo = ({ env, nonce }: MatomoProps) => {
 
   /* The @socialgouv/matomo-next does not work with next 13 */
   useEffect(() => {
-    if (!pathname || !matomoConsent || env !== "prod") {
+    if (!pathname || !matomoConsent || env === "dev") {
       return;
     }
 
@@ -67,6 +68,7 @@ export const Matomo = ({ env, nonce }: MatomoProps) => {
     push(["setReferrerUrl", `${previousPath}`]);
     push(["setCustomUrl", pathname]);
     push(["deleteCustomVariables", "page"]);
+    push(["deleteCustomVariable", "page"]);
     setPreviousPath(pathname);
     // In order to ensure that the page title had been updated,
     // we delayed pushing the tracking to the next tick.
@@ -75,6 +77,7 @@ export const Matomo = ({ env, nonce }: MatomoProps) => {
       if (pathname.startsWith("/recherche")) {
         push(["trackSiteSearch", searchParams?.get("keyword") ?? searchParams?.get("query") ?? ""]);
       } else {
+        console.debug("Matomo tracking", { pathname, previousPath });
         push(["trackPageView"]);
       }
     });
