@@ -1,5 +1,6 @@
 {
   "name": "carte-verte",
+  "description": "La solution de paiement de l'ADEME qui récompense vos achats durables",
   "version": "1.0.0",
   "private": true,
   "engines": {

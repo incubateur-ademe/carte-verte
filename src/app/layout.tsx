@@ -51,6 +51,10 @@ export const metadata: Metadata = {
       default: config.name,
     },
     description,
+    type: "website",
+    locale: "fr_FR",
+    countryName: "France",
+    siteName: "Carte Verte",
   },
 };
 
@@ -136,7 +140,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
                 },
                 <FooterConsentManagementItem key="FooterConsentManagementItem" />,
                 {
-                  text: "▲ Propulsé par Vercel",
+                  text: <>▲&nbsp;Propulsé par Vercel</>,
                   linkProps: {
                     href: "https://vercel.com/?utm_source=ademe&utm_campaign=oss",
                     className: "font-geist-sans",

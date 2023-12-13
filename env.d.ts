@@ -8,6 +8,16 @@ declare namespace NodeJS {
          */
         CARTE_VERTE_ENV?: string;
         /**
+         * Dist: `1`  
+         * {@link [Local Env Dist](.env.development)}
+         */
+        NEXT_PUBLIC_MATOMO_SITE_ID?: string;
+        /**
+         * Dist: `http://localhost`  
+         * {@link [Local Env Dist](.env.development)}
+         */
+        NEXT_PUBLIC_MATOMO_URL?: string;
+        /**
          * No dist value.  
          * {@link [Local Env Dist](.env.development)}
          */
@@ -31,6 +41,8 @@ declare namespace NodeJS {
 }
 declare type ProcessEnvCustomKeys = 
     | 'CARTE_VERTE_ENV'
+    | 'NEXT_PUBLIC_MATOMO_SITE_ID'
+    | 'NEXT_PUBLIC_MATOMO_URL'
     | 'NEXT_PUBLIC_APP_VERSION'
     | 'NEXT_PUBLIC_APP_VERSION_COMMIT'
     | 'NEXT_PUBLIC_REPOSITORY_URL'

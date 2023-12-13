@@ -2,6 +2,7 @@ import ButtonsGroup from "@codegouvfr/react-dsfr/ButtonsGroup";
 import artworkOvoidSvgUrl from "@codegouvfr/react-dsfr/dsfr/artwork/background/ovoid.svg";
 import artworkTechnicalErrorSvgUrl from "@codegouvfr/react-dsfr/dsfr/artwork/pictograms/system/technical-error.svg";
 import { type StaticImageData } from "next/image";
+import { type ReactNode } from "react";
 
 import { Box, Container, Grid, GridCol } from "@/dsfr";
 
@@ -34,13 +35,29 @@ const errors = {
   },
 };
 
-export interface ErrorDisplayProps {
-  code: keyof typeof errors;
+export type ErrorDisplayProps = {
   noRedirect?: boolean;
-}
+} & (
+  | {
+      body: ReactNode;
+      code: "custom";
+      headline: string;
+      title: string;
+    }
+  | {
+      body?: never;
+      code: keyof typeof errors;
+      headline?: never;
+      title?: never;
+    }
+);
 
-export const ErrorDisplay = ({ code, noRedirect }: ErrorDisplayProps) => {
-  const { title, headline, body } = errors[code];
+export const ErrorDisplay = ({ code, noRedirect, body, headline, title }: ErrorDisplayProps) => {
+  if (code !== "custom") {
+    if (!errors[code]) throw new Error(`Unknown error code: ${code}`);
+    ({ body, headline, title } = errors[code]);
+  }
+
   return (
     <Container>
       <Grid haveGutters valign="middle" align="center" my="7w" mtmd="12w" mbmd="10w">

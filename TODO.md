@@ -5,7 +5,7 @@
 - [x] mdx
 - [x] deploy (vercel or scalingo)
 - [ ] sentry
-- [ ] fin matomo
+- [x] fin matomo
 - [ ] save base template
-- [ ] content
-- [ ] landing carte verte
+- [x] content
+- [x] landing carte verte
