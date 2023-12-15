@@ -57,3 +57,15 @@ declare module "@__content/landing/hero_title.mdx" {
   export default MDXContent;
   export const metadata: CarteVerteHeroMDXMetadata;
 }
+
+declare module "@codegouvfr/react-dsfr/*.svg" {
+  export interface SVG {
+    height: number;
+    src: string;
+    width: number;
+  }
+
+  const content: SVG;
+
+  export = content;
+}
