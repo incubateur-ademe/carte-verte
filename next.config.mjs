@@ -1,11 +1,44 @@
-const withMDX = require("@next/mdx")({
-  extension: /\.mdx?$/,
-});
-const { version } = require("./package.json");
+import createMDX from "@next/mdx";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkGfm from "remark-gfm";
+import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
-const ContentSecurityPolicy = require("./csp.config");
+import packageJson from "./package.json" assert { type: "json" };
+
+const { version } = packageJson;
 
 const isDeployment = !!process.env.VERCEL_URL;
+
+const csp = {
+  "default-src": ["'none'"],
+  "connect-src": [
+    "'self'",
+    "https://*.gouv.fr",
+    process.env.CARTE_VERTE_ENV === "preprod" && "https://vercel.live",
+    process.env.NODE_ENV === "development" && "http://localhost",
+  ],
+  "font-src": ["'self'"],
+  "media-src": ["'self'"],
+  "img-src": ["'self'", "data:"],
+  "script-src": [
+    "'self'",
+    "'unsafe-inline'",
+    "https://stats.beta.gouv.fr",
+    process.env.CARTE_VERTE_ENV === "preprod" && "https://vercel.live",
+    process.env.NODE_ENV === "development" && "'unsafe-eval' http://localhost",
+  ],
+  "style-src": ["'self'", "'unsafe-inline'"],
+  "object-src": ["'self'", "data:"],
+  "frame-ancestors": ["'self'"],
+  "base-uri": ["'self'", "https://*.gouv.fr"],
+  "form-action": ["'self'", "https://*.gouv.fr"],
+  "block-all-mixed-content": [],
+  "upgrade-insecure-requests": [],
+};
+
+const ContentSecurityPolicy = Object.entries(csp)
+  .map(([key, value]) => `${key} ${value.filter(Boolean).join(" ")};`)
+  .join(" ");
 
 /** @type {import('next').NextConfig} */
 const config = {
@@ -82,4 +115,11 @@ const config = {
   },
 };
 
-module.exports = withMDX(config);
+const withMDX = createMDX({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [remarkFrontmatter, remarkGfm, [remarkMdxFrontmatter, { name: "metadata" }]],
+  },
+});
+
+export default withMDX(config);

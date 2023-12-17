@@ -12,7 +12,7 @@ export const LandingTextOnlyBloc = async ({
     throw new Error("SingleImageBloc cannot be used with metadata.type !== text-only");
   }
 
-  const Content = ((await import(`@__content/landing/content/${id}/bloc.mdx`)) as typeof import("*.mdx")).default;
+  const Content = ((await import(`@__content/landing/blocs/${id}/bloc.mdx`)) as typeof import("*.mdx")).default;
 
   return (
     <Container>

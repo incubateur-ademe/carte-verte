@@ -197,7 +197,7 @@ const config = {
       },
     },
     {
-      files: ["src/pages/**/*.ts?(x)", `src/app/**/+(${nextFiles}).ts?(x)`],
+      files: ["src/pages/**/*.ts?(x)", `src/app/**/+(${nextFiles}).ts?(x)`, "next.config.mjs"],
       rules: {
         "import/no-default-export": "off",
       },

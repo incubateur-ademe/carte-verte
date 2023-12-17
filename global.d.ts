@@ -14,12 +14,8 @@ declare type CarteVerteMDXLandingMetadata = CarteVerteHeroMDXMetadata &
         type: "single-image";
       }
     | {
-        images: {
-          first: CarteVerteMDXImage;
-          second: CarteVerteMDXImage;
-          third: CarteVerteMDXImage;
-        };
-        type: "3-alternated";
+        images: CarteVerteMDXImage[];
+        type: "alternated";
       }
     | {
         type: "text-only";
@@ -40,7 +36,7 @@ declare type CarteVerteFAQMDXMetadata = CarteVerteHeroMDXMetadata & {
 
 declare type MDXContent = typeof import("*.mdx").default;
 
-declare module "@__content/landing/content/*/title.mdx" {
+declare module "@__content/landing/blocs/*/title.mdx" {
   const MDXContent: MDXContent;
   export default MDXContent;
   export const metadata: CarteVerteMDXLandingMetadata;
