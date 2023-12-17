@@ -17,7 +17,7 @@ export const LandingSingleImageBloc = async ({
     throw new Error("SingleImageBloc cannot be used with metadata.type !== single-image");
   }
 
-  const Content = ((await import(`@__content/landing/content/${id}/bloc.mdx`)) as typeof import("*.mdx")).default;
+  const Content = ((await import(`@__content/landing/blocs/${id}/bloc.mdx`)) as typeof import("*.mdx")).default;
 
   const subProps = {
     content: <Content />,

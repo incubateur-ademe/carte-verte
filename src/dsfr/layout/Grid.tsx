@@ -52,6 +52,11 @@ export type GridColProps = MarginPropsVertical &
     offset?: ColsNumberType | `${ColsNumberType}`;
     offsetLg?: ColsNumberType | `${ColsNumberType}`;
     offsetMd?: ColsNumberType | `${ColsNumberType}`;
+    offsetRight?: ColsNumberType | `${ColsNumberType}`;
+    offsetRightLg?: ColsNumberType | `${ColsNumberType}`;
+    offsetRightMd?: ColsNumberType | `${ColsNumberType}`;
+    offsetRightSm?: ColsNumberType | `${ColsNumberType}`;
+    offsetRightXl?: ColsNumberType | `${ColsNumberType}`;
     offsetSm?: ColsNumberType | `${ColsNumberType}`;
     offsetXl?: ColsNumberType | `${ColsNumberType}`;
     sm?: ColsNumberType | `${ColsNumberType}`;
@@ -69,6 +74,11 @@ export const GridCol = ({
   offsetMd,
   offsetSm,
   offsetXl,
+  offsetRight,
+  offsetRightLg,
+  offsetRightMd,
+  offsetRightSm,
+  offsetRightXl,
   className,
   children,
   ...rest
@@ -86,6 +96,11 @@ export const GridCol = ({
         offsetMd && `fr-col-offset-md-${offsetMd}`,
         offsetLg && `fr-col-offset-lg-${offsetLg}`,
         offsetXl && `fr-col-offset-xl-${offsetXl}`,
+        offsetRight && `fr-col-offset-${offsetRight}--right`,
+        offsetRightSm && `fr-col-offset-sm-${offsetRightSm}--right`,
+        offsetRightMd && `fr-col-offset-md-${offsetRightMd}--right`,
+        offsetRightLg && `fr-col-offset-lg-${offsetRightLg}--right`,
+        offsetRightXl && `fr-col-offset-xl-${offsetRightXl}--right`,
       ),
       className,
     )}

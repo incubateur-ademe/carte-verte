@@ -1,4 +1,4 @@
-import CguContent from "@__content/cgu.md";
+import CguContent from "@__content/cgu.mdx";
 import { type Metadata } from "next";
 
 import { config } from "@/config";
