@@ -1,42 +1,40 @@
-"use client";
+import Card from "@codegouvfr/react-dsfr/Card";
 
-import { useEffect, useState } from "react";
+import { Grid, GridCol } from "@/dsfr";
+import { fetchMatomoData } from "@/lib/matomo";
 
-import { StatTile } from "@/components/StatTile";
-import { Grid } from "@/dsfr";
-import { fetchMatomoData, type MatomoResult } from "@/lib/matomo";
-
-export const StatsContent = () => {
-  const [matomoData, setMatomoData] = useState<MatomoResult>({
-    nbPageViews: 0,
-    nbVisits: 0,
-    nbUniqPageViews: 0,
-  });
-
-  useEffect(() => {
-    void (async () => {
-      const data = await fetchMatomoData();
-      setMatomoData(data);
-    })();
-  }, []);
+export const StatsContent = async () => {
+  const matomoData = await fetchMatomoData();
 
   return (
     <Grid haveGutters>
-      <StatTile
-        title="Nombre de visites"
-        stats={matomoData.nbVisits}
-        description="C'est le nombre de visites total du site sur les 12 derniers mois"
-      />
-      <StatTile
-        title="Nombre de pages vues (total)"
-        stats={matomoData.nbPageViews}
-        description="C'est le nombre de pages vues au total sur le site sur les 12 derniers mois"
-      />
-      <StatTile
-        title="Nombre de pages vues (uniques)"
-        stats={matomoData.nbUniqPageViews}
-        description="C'est le nombre de pages vues uniques sur le site sur les 12 derniers mois"
-      />
+      <GridCol md={4}>
+        <Card
+          title="Nombre de visites"
+          desc="Nombre de visites total du site sur les 12 derniers mois"
+          start={<strong className="fr-display--md">{matomoData.nbVisits}</strong>}
+          size="large"
+          grey
+        />
+      </GridCol>
+      <GridCol md={4}>
+        <Card
+          title="Nombre de pages vues (total)"
+          desc="Nombre de pages vues au total sur le site sur les 12 derniers mois"
+          start={<strong className="fr-display--md">{matomoData.nbPageViews}</strong>}
+          size="large"
+          grey
+        />
+      </GridCol>
+      <GridCol md={4}>
+        <Card
+          title="Nombre de pages vues (uniques)"
+          desc="Nombre de pages vues uniques sur le site sur les 12 derniers mois"
+          start={<strong className="fr-display--md">{matomoData.nbUniqPageViews}</strong>}
+          size="large"
+          grey
+        />
+      </GridCol>
     </Grid>
   );
 };
