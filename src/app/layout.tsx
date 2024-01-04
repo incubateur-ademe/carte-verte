@@ -26,11 +26,10 @@ import {
 import { defaultColorScheme } from "../defaultColorScheme";
 import { StartDsfr } from "../StartDsfr";
 import styles from "./root.module.scss";
+import { sharedMetadata } from "./shared-metadata";
 
 const contentId = "content";
 const footerId = "footer";
-const description =
-  "Carte Verte s’inscrit dans un objectif de politique publique de réduction de l’empreinte environnementale des français et pose le constat suivant : l’empreinte environnementale de la consommation (“je mange”, “j’achète”) des citoyens est trop élevée et peu de dispositifs existent pour l’abaisser (contrairement aux champs des transports et du logement).";
 
 const operatorLogo: HeaderProps["operatorLogo"] = {
   imgUrl: "/img/ademe-logo-2022-1.svg",
@@ -40,7 +39,7 @@ const operatorLogo: HeaderProps["operatorLogo"] = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(config.host),
-  description,
+  ...sharedMetadata,
   title: {
     template: `${config.name} - %s`,
     default: config.name,
@@ -50,11 +49,7 @@ export const metadata: Metadata = {
       template: `${config.name} - %s`,
       default: config.name,
     },
-    description,
-    type: "website",
-    locale: "fr_FR",
-    countryName: "France",
-    siteName: "Carte Verte",
+    ...sharedMetadata.openGraph,
   },
 };
 

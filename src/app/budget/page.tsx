@@ -1,12 +1,15 @@
 import { type Metadata } from "next";
 
 import { ErrorDisplay } from "../ErrorDisplay";
+import { sharedMetadata } from "../shared-metadata";
 
 const title = "Budget";
 const url = "/budget";
 export const metadata: Metadata = {
+  ...sharedMetadata,
   title,
   openGraph: {
+    ...sharedMetadata.openGraph,
     title,
     url,
   },

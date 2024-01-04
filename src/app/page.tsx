@@ -18,11 +18,14 @@ import { LandingHero } from "./_landing/hero";
 import { CTA } from "./CTA";
 import { ErrorDisplay } from "./ErrorDisplay";
 import styles from "./index.module.scss";
+import { sharedMetadata } from "./shared-metadata";
 
 const url = "/";
 
 export const metadata: Metadata = {
+  ...sharedMetadata,
   openGraph: {
+    ...sharedMetadata.openGraph,
     url,
   },
   alternates: {
