@@ -1,3 +1,4 @@
+import Highlight from "@codegouvfr/react-dsfr/Highlight";
 import { cx } from "@codegouvfr/react-dsfr/tools/cx";
 import Image from "next/image";
 import { type ReactNode } from "react";
@@ -42,6 +43,14 @@ const LandingSingleImageBlocMobile = ({ content, title, image, metadata }: SubPr
       <GridCol>{title}</GridCol>
       <GridCol>{image}</GridCol>
       <GridCol>{content}</GridCol>
+      <GridCol>
+        <Highlight size="lg">
+          Retrouvez la liste des commerces éligibles Carte Verte sur cette carte interactive :{" "}
+          <a href="toto" target="_blank">
+            lien
+          </a>
+        </Highlight>
+      </GridCol>
       {metadata.cta && (
         <GridCol>
           <CTA source={metadata.cta.source} title={metadata.cta.title} asGroup href={metadata.cta.href}>
