@@ -4,6 +4,7 @@ import { Fragment, type ReactNode } from "react";
 import { CTA } from "@/app/CTA";
 import { Container, Grid, GridCol, type GridColProps } from "@/dsfr";
 
+import { getGridImageOffset } from "./helper";
 import { type MDXBlocProps } from "./type";
 
 export const LandingAlternatedBloc = async ({
@@ -49,7 +50,7 @@ const LandingAlternatedBlocsMobile = ({ contents, title, images, metadata }: Sub
       <GridCol>{title}</GridCol>
       {images.map((image, index) => (
         <Fragment key={index}>
-          <GridCol>{image}</GridCol>
+          <GridCol {...getGridImageOffset(metadata.images[index].mobile?.size)}>{image}</GridCol>
           <GridCol>{contents[index]}</GridCol>
         </Fragment>
       ))}

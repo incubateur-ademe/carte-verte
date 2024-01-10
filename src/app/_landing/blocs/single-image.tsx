@@ -6,6 +6,7 @@ import { type ReactNode } from "react";
 import { CTA } from "@/app/CTA";
 import { Box, Container, Grid, GridCol } from "@/dsfr";
 
+import { getGridImageOffset } from "./helper";
 import { type MDXBlocProps } from "./type";
 
 export const LandingSingleImageBloc = async ({
@@ -41,7 +42,7 @@ const LandingSingleImageBlocMobile = ({ content, title, image, metadata }: SubPr
   <Container className="md:hidden">
     <Grid haveGutters>
       <GridCol>{title}</GridCol>
-      <GridCol>{image}</GridCol>
+      <GridCol {...getGridImageOffset(metadata.image.mobile?.size)}>{image}</GridCol>
       <GridCol>{content}</GridCol>
       <GridCol>
         <Highlight size="lg">

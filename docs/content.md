@@ -12,7 +12,8 @@ Les pages autres que la landing sont directement éditables dans à la racine du
 Sur la landing, les blocs de contenu sont éditables dans le dossier `content/landing`. La landing est découpé en 3 parties, la section "hero", le contenu qui contient dynamiquement la liste des blocs de contenu, et la FAQ en guise de footer.
 
 ### Hero
-Le contenu de la section "hero" est découpé en 2 fichiers, `hero_title.mdx` et `hero_bloc.mdx`. Le premier contient le titre ainsi que des métadonnées pour gérer le CTA. Le second contient le contenu du bloc.
+Le contenu de la section "hero" est découpé en 2 fichiers, `hero_title.mdx` et `hero_bloc.mdx`. Le premier contient le titre ainsi que des métadonnées pour gérer le CTA. Le second contient le contenu du bloc.  
+L'image utilisée est `public/hero.svg`. La taille est fixée à `md`. À noter qu'elle est utilisé pour l'open graph (partage sur les réseaux sociaux).
 
 **Métadonnées**
 - `cta`: les propriétés du CTA
@@ -39,6 +40,8 @@ Un bloc `single-image` est découpé en 2 fichiers, `bloc.mdx` et `title.mdx`. L
 - `image.src`: url de l'image. Soit une url, soit le nom d'un fichier situé dans le dossier `public/`
 - `image.alt`: texte alternatif de l'image (pour l'accessibilité)
 - `image.position`: position de l'image. Soit `left` soit `right`. (`left` par défaut)
+- `image.mobile`: les propriétés de l'image sur mobile
+- `image.mobile.size`: taille d'affichage de l'image sur mobile. Soit `sm`, `md`, `lg`. (`md` par défaut)
 - `cta`: les propriétés du CTA
 - `cta.source`: Source utilisée comme propriété Matomo lors du clic
 - `cta.href`: url de la page de destination (form par exemple). Si vide, l'url par défaut est utilisée (fichier config.ts).
@@ -54,6 +57,8 @@ Un maximum de 12 blocs est autorisé.
 - `images`: un tableau de propriétés d'images
     - `src`: url de l'image. Soit une url, soit le nom d'un fichier situé dans le dossier `public/`
     - `alt`: texte alternatif de l'image (pour l'accessibilité)
+    - `mobile`: les propriétés de l'image sur mobile
+    - `mobile.size`: taille d'affichage de l'image sur mobile. Soit `sm`, `md`, `lg`. (`md` par défaut)
 - `cta`: les propriétés du CTA
 - `cta.source`: Source utilisée comme propriété Matomo lors du clic
 - `cta.href`: url de la page de destination (form par exemple). Si vide, l'url par défaut est utilisée (fichier config.ts).

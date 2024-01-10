@@ -1,6 +1,9 @@
 /* eslint-disable import/no-default-export */
 interface CarteVerteMDXImage {
   readonly alt: string;
+  readonly mobile?: {
+    readonly size?: "lg" | "md" | "sm";
+  };
   readonly src: string;
 }
 
