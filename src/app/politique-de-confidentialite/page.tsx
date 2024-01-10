@@ -9,13 +9,16 @@ import { AnchorLink } from "@/dsfr/client";
 import { anchorHeadingMDXComponents } from "@/mdx-components";
 
 import { FooterConsentManagementItem } from "../../consentManagement";
+import { sharedMetadata } from "../shared-metadata";
 
 const title = "Politique de confidentialité";
 const url = "/politique-de-confidentialite";
 
 export const metadata: Metadata = {
+  ...sharedMetadata,
   title,
   openGraph: {
+    ...sharedMetadata.openGraph,
     title,
     url,
   },

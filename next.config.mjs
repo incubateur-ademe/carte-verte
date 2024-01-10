@@ -34,6 +34,7 @@ const csp = {
   "form-action": ["'self'", "https://*.gouv.fr"],
   "block-all-mixed-content": [],
   "upgrade-insecure-requests": [],
+  "frame-src": [process.env.CARTE_VERTE_ENV === "preprod" ? "https://vercel.live" : "'none'"],
 };
 
 const ContentSecurityPolicy = Object.entries(csp)
