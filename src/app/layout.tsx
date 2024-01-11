@@ -17,6 +17,7 @@ import { type PropsWithChildren, Suspense } from "react";
 import { Brand } from "@/components/Brand";
 import { Matomo } from "@/components/utils/Matomo";
 import { config } from "@/config";
+import { Follow } from "@/dsfr/base/Follow";
 
 import {
   ConsentBannerAndConsentManagement,
@@ -117,6 +118,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
             <main role="main" id={contentId} className={styles.content}>
               {children}
             </main>
+            <Follow />
             <Footer
               id={footerId}
               accessibility="non compliant"
