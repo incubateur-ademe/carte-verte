@@ -58,12 +58,7 @@ const Home = async () => {
                   </Fragment>
                 );
               case "alternated":
-                return (
-                  <Fragment key={id}>
-                    <LandingAlternatedBloc id={id} metadata={metadata} titleComponent={titleComponent} />
-                    <LandingAlternatedBloc mobile id={id} metadata={metadata} titleComponent={titleComponent} />
-                  </Fragment>
-                );
+                return <LandingAlternatedBloc key={id} id={id} metadata={metadata} titleComponent={titleComponent} />;
               case "text-only":
                 return <LandingTextOnlyBloc key={id} id={id} metadata={metadata} titleComponent={titleComponent} />;
               default:

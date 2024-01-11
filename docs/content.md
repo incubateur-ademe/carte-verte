@@ -28,7 +28,7 @@ Chaque bloc doit être dans un dossier numéroté. Le numéro du dossier est uti
 
 Il existe 3 types de blocs.
 - `single-image`: bloc avec une seule image
-- `alternated`: bloc avec des images alternées sur desktop et en colonne sur mobile
+- `alternated`: bloc avec des images alternées sur desktop et en colonne sur mobile, avec des cards (dsfr)
 - `text-only`: bloc avec du texte uniquement
 
 #### Single image
@@ -41,7 +41,7 @@ Un bloc `single-image` est découpé en 2 fichiers, `bloc.mdx` et `title.mdx`. L
 - `image.alt`: texte alternatif de l'image (pour l'accessibilité)
 - `image.position`: position de l'image. Soit `left` soit `right`. (`left` par défaut)
 - `image.mobile`: les propriétés de l'image sur mobile
-- `image.mobile.size`: taille d'affichage de l'image sur mobile. Soit `sm`, `md`, `lg`. (`md` par défaut)
+- `image.mobile.size`: taille d'affichage de l'image sur mobile. Soit `small`, `medium`, `large`. (`medium` par défaut)
 - `cta`: les propriétés du CTA
 - `cta.source`: Source utilisée comme propriété Matomo lors du clic
 - `cta.href`: url de la page de destination (form par exemple). Si vide, l'url par défaut est utilisée (fichier config.ts).
@@ -54,11 +54,14 @@ Un maximum de 12 blocs est autorisé.
 
 **Métadonnées**
 - `type`: doit être `alternated`
-- `images`: un tableau de propriétés d'images
-    - `src`: url de l'image. Soit une url, soit le nom d'un fichier situé dans le dossier `public/`
-    - `alt`: texte alternatif de l'image (pour l'accessibilité)
-    - `mobile`: les propriétés de l'image sur mobile
-    - `mobile.size`: taille d'affichage de l'image sur mobile. Soit `sm`, `md`, `lg`. (`md` par défaut)
+- `cards`: un tableau de propriétés des cards
+    - `title`: titre de la card
+    - `image`: les propriétés de l'image
+    - `image.src`: url de l'image. Soit une url, soit le nom d'un fichier situé dans le dossier `public/`
+    - `image.alt`: texte alternatif de l'image (pour l'accessibilité)
+    - `image.position`: position de l'image. Soit `left` soit `right`. (`left` par défaut)
+    - `image.mobile`: les propriétés de l'image sur mobile
+    - `image.mobile.size`: taille d'affichage de l'image sur mobile. Soit `small`, `medium`, `large`. (`medium` par défaut)
 - `cta`: les propriétés du CTA
 - `cta.source`: Source utilisée comme propriété Matomo lors du clic
 - `cta.href`: url de la page de destination (form par exemple). Si vide, l'url par défaut est utilisée (fichier config.ts).

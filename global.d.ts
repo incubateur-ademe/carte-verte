@@ -2,7 +2,7 @@
 interface CarteVerteMDXImage {
   readonly alt: string;
   readonly mobile?: {
-    readonly size?: "lg" | "md" | "sm";
+    readonly size?: "large" | "medium" | "small";
   };
   readonly src: string;
 }
@@ -10,15 +10,18 @@ interface CarteVerteMDXImage {
 declare type CarteVerteMDXLandingMetadata = CarteVerteHeroMDXMetadata &
   (
     | {
+        cards: Array<{
+          readonly image: CarteVerteMDXImage;
+          readonly title?: string;
+        }>;
+        type: "alternated";
+      }
+    | {
         image: CarteVerteMDXImage & {
           /** @default "left" */
           position?: "left" | "right";
         };
         type: "single-image";
-      }
-    | {
-        images: CarteVerteMDXImage[];
-        type: "alternated";
       }
     | {
         type: "text-only";
