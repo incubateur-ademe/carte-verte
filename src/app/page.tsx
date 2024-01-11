@@ -46,21 +46,48 @@ const Home = async () => {
         <LandingHero metadata={heroMetadata} titleComponent={HeroTitleContent} blocComponent={HeroBlocContent} />
         <LandingHero mobile metadata={heroMetadata} titleComponent={HeroTitleContent} blocComponent={HeroBlocContent} />
       </Box>
-      {blocs.map(({ titleComponent, metadata, id }) => (
+      {blocs.map(({ titleComponent, metadata, id, highlight }) => (
         <Container as="section" py="4w" className={cx("fr-hr", styles.block)} key={id} fluid>
           {(() => {
             switch (metadata.type) {
               case "single-image":
                 return (
                   <Fragment key={id}>
-                    <LandingSingleImageBloc id={id} metadata={metadata} titleComponent={titleComponent} />
-                    <LandingSingleImageBloc mobile id={id} metadata={metadata} titleComponent={titleComponent} />
+                    <LandingSingleImageBloc
+                      id={id}
+                      metadata={metadata}
+                      highlight={highlight}
+                      titleComponent={titleComponent}
+                    />
+                    <LandingSingleImageBloc
+                      mobile
+                      id={id}
+                      metadata={metadata}
+                      highlight={highlight}
+                      titleComponent={titleComponent}
+                    />
                   </Fragment>
                 );
               case "alternated":
-                return <LandingAlternatedBloc key={id} id={id} metadata={metadata} titleComponent={titleComponent} />;
+                return (
+                  <LandingAlternatedBloc
+                    key={id}
+                    id={id}
+                    metadata={metadata}
+                    highlight={highlight}
+                    titleComponent={titleComponent}
+                  />
+                );
               case "text-only":
-                return <LandingTextOnlyBloc key={id} id={id} metadata={metadata} titleComponent={titleComponent} />;
+                return (
+                  <LandingTextOnlyBloc
+                    key={id}
+                    id={id}
+                    metadata={metadata}
+                    highlight={highlight}
+                    titleComponent={titleComponent}
+                  />
+                );
               default:
                 return null;
             }

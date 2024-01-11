@@ -27,14 +27,18 @@ export const LandingHero = ({
   </>
 );
 
-const LandingHeroDesktop = ({ blocComponent: Bloc, titleComponent: Title, metadata }: LandingHeroProps) => (
+const LandingHeroDesktop = ({
+  blocComponent: Bloc,
+  titleComponent: Title,
+  metadata: { cta } = {},
+}: LandingHeroProps) => (
   <Container className="hidden md:flex">
     <Grid haveGutters>
       <GridCol base={7} className="fr-my-auto">
         <Title />
         <Bloc />
-        <CTA source={metadata.cta?.source ?? DEFAULT_CTA_SOURCE} title={metadata.cta?.title} href={metadata.cta?.href}>
-          {metadata.cta?.title}
+        <CTA source={cta?.source ?? DEFAULT_CTA_SOURCE} title={cta?.title} href={cta?.href}>
+          {cta?.title}
         </CTA>
       </GridCol>
       <GridCol base={5} className="fr-mx-auto">
@@ -44,7 +48,11 @@ const LandingHeroDesktop = ({ blocComponent: Bloc, titleComponent: Title, metada
   </Container>
 );
 
-const LandingHeroMobile = ({ blocComponent: Bloc, titleComponent: Title, metadata }: LandingHeroProps) => (
+const LandingHeroMobile = ({
+  blocComponent: Bloc,
+  titleComponent: Title,
+  metadata: { cta } = {},
+}: LandingHeroProps) => (
   <Container className="md:hidden">
     <Grid haveGutters>
       <GridCol>
@@ -57,13 +65,8 @@ const LandingHeroMobile = ({ blocComponent: Bloc, titleComponent: Title, metadat
         <Bloc />
       </GridCol>
     </Grid>
-    <CTA
-      source={metadata.cta?.source ?? DEFAULT_CTA_SOURCE}
-      title={metadata.cta?.title}
-      href={metadata.cta?.href}
-      asGroup
-    >
-      {metadata.cta?.title}
+    <CTA source={cta?.source ?? DEFAULT_CTA_SOURCE} title={cta?.title} href={cta?.href} asGroup>
+      {cta?.title}
     </CTA>
   </Container>
 );

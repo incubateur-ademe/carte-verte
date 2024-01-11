@@ -28,13 +28,21 @@ declare type CarteVerteMDXLandingMetadata = CarteVerteHeroMDXMetadata &
       }
   );
 
-declare type CarteVerteHeroMDXMetadata = {
-  readonly cta?: {
-    readonly href?: string;
-    readonly source: string;
-    readonly title?: string;
-  };
-};
+declare type CarteVerteMDXLandingHighlightMetadata =
+  | {
+      readonly size?: "large" | "small";
+    }
+  | undefined;
+
+declare type CarteVerteHeroMDXMetadata =
+  | {
+      readonly cta?: {
+        readonly href?: string;
+        readonly source: string;
+        readonly title?: string;
+      };
+    }
+  | undefined;
 
 declare type CarteVerteFAQMDXMetadata = CarteVerteHeroMDXMetadata & {
   readonly question: string;
@@ -46,6 +54,12 @@ declare module "@__content/landing/blocs/*/title.mdx" {
   const MDXContent: MDXContent;
   export default MDXContent;
   export const metadata: CarteVerteMDXLandingMetadata;
+}
+
+declare module "@__content/landing/blocs/*/highlight.mdx" {
+  const MDXContent: MDXContent;
+  export default MDXContent;
+  export const metadata: CarteVerteMDXLandingHighlightMetadata;
 }
 
 declare module "@__content/landing/faq/*.mdx" {

@@ -22,9 +22,15 @@ L'image utilisée est `public/hero.svg`. La taille est fixée à `md`. À noter 
 - `cta.title`: Texte du bouton. Si vide, "Je souhaite recevoir ma Carte Verte" est utilisé.
 
 ### Blocs de contenu
-Les blocs de contenu sont des fichiers markdown situés dans le dossier `content/landing/blocs`. Ils contiennent des métadonnées pour gérer le titre, le contenu, et l'image du bloc si besoin.
+Les blocs de contenu sont des fichiers markdown situés dans le dossier `content/landing/blocs`. Ils contiennent des métadonnées pour gérer le titre, le contenu, et l'image du bloc si besoin. Optionnellement, ils peuvent aussi contenir des informations pour ajouter une mise en exergue additionnelle ("highlight") au bloc. La mise en exergue, si présente, sera affichée en dessous du contenu mais au dessus du CTA.
 
 Chaque bloc doit être dans un dossier numéroté. Le numéro du dossier est utilisé pour ordonner les blocs sur la landing.
+
+#### Highlight
+Un bloc peut avoir une mise en exergue additionnelle ("highlight"). Pour cela, il faut ajouter un fichier `highlight.mdx` dans le dossier du bloc. Ce fichier contient le contenu de la mise en exergue ainsi que ses métadonnées.
+
+**Métadonnées**
+- `size`: taille de la mise en exergue. Soit `small` ou `large`. (`large` par défaut)
 
 Il existe 3 types de blocs.
 - `single-image`: bloc avec une seule image

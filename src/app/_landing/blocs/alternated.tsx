@@ -1,9 +1,10 @@
 import Card from "@codegouvfr/react-dsfr/Card";
-import { Fragment } from "react";
 
 import { CTA } from "@/app/CTA";
 import { Container, Grid, GridCol, type GridColProps } from "@/dsfr";
+import { paragraphContentMDXComponents } from "@/mdx-components";
 
+import { getHighlight } from "./helper";
 import { type MDXBlocProps } from "./type";
 
 // based on 12 columns grid
@@ -13,6 +14,7 @@ export const LandingAlternatedBloc = async ({
   metadata,
   id,
   titleComponent: TitleComponent,
+  highlight,
 }: MDXBlocProps & { mobile?: boolean }) => {
   if (metadata.type !== "alternated") {
     throw new Error("AlternatedBloc cannot be used with metadata.type !== alternated");
@@ -25,7 +27,7 @@ export const LandingAlternatedBloc = async ({
         (_, index) => import(`@__content/landing/blocs/${id}/bloc_${index < 9 ? "0" : ""}${index + 1}.mdx`),
       ),
     )) as Array<typeof import("*.mdx")>
-  ).map(({ default: Content }, index) => <Content key={`bloc_${index}`} components={{ p: Fragment }} />);
+  ).map(({ default: Content }, index) => <Content key={`bloc_${index}`} components={paragraphContentMDXComponents} />);
 
   const md = colSizeMap[metadata.cards.length - 1];
   return (
@@ -46,6 +48,7 @@ export const LandingAlternatedBloc = async ({
             />
           </GridCol>
         ))}
+        {highlight && <GridCol>{getHighlight(highlight)}</GridCol>}
         {metadata.cta && (
           <GridCol>
             <CTA source={metadata.cta.source} title={metadata.cta.title} href={metadata.cta.href} asGroup>
