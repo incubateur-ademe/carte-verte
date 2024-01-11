@@ -4,6 +4,7 @@ import { CTA } from "@/app/CTA";
 import { Container, Grid, GridCol, type GridColProps } from "@/dsfr";
 import { paragraphContentMDXComponents } from "@/mdx-components";
 
+import styles from "./alternated.module.scss";
 import { getHighlight } from "./helper";
 import { type MDXBlocProps } from "./type";
 
@@ -45,12 +46,16 @@ export const LandingAlternatedBloc = async ({
               imageAlt={metadata.cards[index].image.alt}
               desc={content}
               size="large"
+              classes={{
+                img: styles["border-img"],
+                imgTag: `!aspect-auto`,
+              }}
             />
           </GridCol>
         ))}
         {highlight && <GridCol>{getHighlight(highlight)}</GridCol>}
         {metadata.cta && (
-          <GridCol>
+          <GridCol mt={highlight ? "0" : "2w"}>
             <CTA source={metadata.cta.source} title={metadata.cta.title} href={metadata.cta.href} asGroup>
               {metadata.cta.title}
             </CTA>

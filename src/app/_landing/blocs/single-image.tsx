@@ -64,7 +64,7 @@ const LandingSingleImageBlocDesktop = ({ content, title, image, metadata, highli
       <GridCol base={5}>{image}</GridCol>
       <GridCol base={7}>
         {title}
-        <Box className={cx("fr-pt-4w", highlight ? "fr-pb-2w" : "fr-pb-4w")}>{content}</Box>
+        <Box className={cx("fr-pt-4w", "fr-pb-2w")}>{content}</Box>
         {highlight && <GridCol>{getHighlight(highlight)}</GridCol>}
         {metadata.cta && (
           <CTA source={metadata.cta.source} title={metadata.cta.title} href={metadata.cta.href}>

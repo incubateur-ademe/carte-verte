@@ -47,7 +47,7 @@ const Home = async () => {
         <LandingHero mobile metadata={heroMetadata} titleComponent={HeroTitleContent} blocComponent={HeroBlocContent} />
       </Box>
       {blocs.map(({ titleComponent, metadata, id, highlight }) => (
-        <Container as="section" py="4w" className={cx("fr-hr", styles.block)} key={id} fluid>
+        <Container as="section" pt="4w" className={cx("fr-hr", styles.block)} key={id} fluid>
           {(() => {
             switch (metadata.type) {
               case "single-image":

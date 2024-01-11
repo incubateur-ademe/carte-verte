@@ -27,7 +27,8 @@ export const CTA = ({
   return asGroup ? (
     <ButtonsGroup
       alignment="center"
-      buttonsEquisized
+      buttonsSize="large"
+      inlineLayoutWhen="always"
       buttons={[
         {
           title,
