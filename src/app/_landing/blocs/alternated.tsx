@@ -1,16 +1,21 @@
-import Image from "next/image";
-import { Fragment, type ReactNode } from "react";
+import Card from "@codegouvfr/react-dsfr/Card";
 
 import { CTA } from "@/app/CTA";
 import { Container, Grid, GridCol, type GridColProps } from "@/dsfr";
+import { paragraphContentMDXComponents } from "@/mdx-components";
 
+import styles from "./alternated.module.scss";
+import { getHighlight } from "./helper";
 import { type MDXBlocProps } from "./type";
+
+// based on 12 columns grid
+const colSizeMap: Array<GridColProps["base"]> = [6, 5, 4, 3, 2, 2, 1, 1, 1, 1, 1, 1];
 
 export const LandingAlternatedBloc = async ({
   metadata,
   id,
   titleComponent: TitleComponent,
-  mobile,
+  highlight,
 }: MDXBlocProps & { mobile?: boolean }) => {
   if (metadata.type !== "alternated") {
     throw new Error("AlternatedBloc cannot be used with metadata.type !== alternated");
@@ -19,71 +24,38 @@ export const LandingAlternatedBloc = async ({
   // import(`@__content/landing/blocs/${id}/bloc_01.mdx`),
   const contents = (
     (await Promise.all(
-      metadata.images.map(
+      metadata.cards.map(
         (_, index) => import(`@__content/landing/blocs/${id}/bloc_${index < 9 ? "0" : ""}${index + 1}.mdx`),
       ),
     )) as Array<typeof import("*.mdx")>
-  ).map(({ default: Content }, index) => <Content key={`bloc_${index}`} />);
+  ).map(({ default: Content }, index) => <Content key={`bloc_${index}`} components={paragraphContentMDXComponents} />);
 
-  // first: <Image className="!relative" src={metadata.images.first.src} alt={metadata.images.first.alt} fill />,
-  const subProps = {
-    contents,
-    images: metadata.images.map(({ src, alt }) => <Image key={src} className="!relative" src={src} alt={alt} fill />),
-    title: <TitleComponent />,
-    metadata,
-  };
-
-  return mobile ? <LandingAlternatedBlocsMobile {...subProps} /> : <LandingAlternatedBlocsDesktop {...subProps} />;
-};
-
-interface SubProps {
-  contents: ReactNode[];
-  images: ReactNode[];
-  metadata: Extract<MDXBlocProps["metadata"], { type: "alternated" }>;
-  title: ReactNode;
-}
-
-const LandingAlternatedBlocsMobile = ({ contents, title, images, metadata }: SubProps) => (
-  <Container className="md:hidden">
-    <Grid haveGutters>
-      <GridCol>{title}</GridCol>
-      {images.map((image, index) => (
-        <Fragment key={index}>
-          <GridCol>{image}</GridCol>
-          <GridCol>{contents[index]}</GridCol>
-        </Fragment>
-      ))}
-    </Grid>
-    {metadata.cta && (
-      <CTA source={metadata.cta.source} title={metadata.cta.title} href={metadata.cta.href} asGroup>
-        {metadata.cta.title}
-      </CTA>
-    )}
-  </Container>
-);
-
-// based on 12 columns grid
-const colSizeMap: Array<GridColProps["base"]> = [6, 5, 4, 3, 2, 2, 1, 1, 1, 1, 1, 1];
-
-const LandingAlternatedBlocsDesktop = ({ contents, title, images, metadata }: SubProps) => {
-  const base = colSizeMap[metadata.images.length - 1];
+  const md = colSizeMap[metadata.cards.length - 1];
   return (
-    <Container className="hidden md:flex">
+    <Container>
       <Grid haveGutters align="center">
-        <GridCol>{title}</GridCol>
-        {images.map((image, index) => (
-          <GridCol key={index} base={base}>
-            {image}
-          </GridCol>
-        ))}
-        <GridCol p="0" m="0"></GridCol>
+        <GridCol>
+          <TitleComponent />
+        </GridCol>
         {contents.map((content, index) => (
-          <GridCol key={index} base={base}>
-            {content}
+          <GridCol key={index} md={md}>
+            <Card
+              shadow
+              title={metadata.cards[index].title}
+              imageUrl={metadata.cards[index].image.src}
+              imageAlt={metadata.cards[index].image.alt}
+              desc={content}
+              size="large"
+              classes={{
+                img: styles["border-img"],
+                imgTag: `!aspect-auto`,
+              }}
+            />
           </GridCol>
         ))}
+        {highlight && <GridCol>{getHighlight(highlight)}</GridCol>}
         {metadata.cta && (
-          <GridCol>
+          <GridCol mt={highlight ? "0" : "2w"}>
             <CTA source={metadata.cta.source} title={metadata.cta.title} href={metadata.cta.href} asGroup>
               {metadata.cta.title}
             </CTA>
