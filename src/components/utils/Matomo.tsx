@@ -31,6 +31,7 @@ export const Matomo = ({ env, nonce }: MatomoProps) => {
     if (!inited) {
       init({
         ...config.matomo,
+        disableCookies: true,
         nonce,
         onInitialization: () => {
           push(["optUserOut"]);
