@@ -19,11 +19,7 @@ import { Matomo } from "@/components/utils/Matomo";
 import { config } from "@/config";
 import { Follow } from "@/dsfr/base/Follow";
 
-import {
-  ConsentBannerAndConsentManagement,
-  FooterConsentManagementItem,
-  FooterPersonalDataPolicyItem,
-} from "../consentManagement";
+import { FooterPersonalDataPolicyItem } from "../consentManagement";
 import { defaultColorScheme } from "../defaultColorScheme";
 import { StartDsfr } from "../StartDsfr";
 import styles from "./root.module.scss";
@@ -84,7 +80,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
       </head>
       <body>
         <DsfrProvider lang="fr">
-          <ConsentBannerAndConsentManagement />
+          {/* <ConsentBannerAndConsentManagement /> */}
           <SkipLinks
             links={[
               {
@@ -135,7 +131,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
                   ...headerFooterDisplayItem,
                   iconId: "fr-icon-theme-fill",
                 },
-                <FooterConsentManagementItem key="FooterConsentManagementItem" />,
+                // <FooterConsentManagementItem key="FooterConsentManagementItem" />,
                 {
                   text: <>▲&nbsp;Propulsé par Vercel</>,
                   linkProps: {
