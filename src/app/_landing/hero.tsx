@@ -4,8 +4,6 @@ import { Container, Grid, GridCol } from "@/dsfr";
 
 import { type MDXBlocProps } from "./blocs/type";
 
-const DEFAULT_CTA_SOURCE = "hero";
-
 export interface LandingHeroProps {
   blocComponent: MDXBlocProps["titleComponent"];
   metadata: CarteVerteHeroMDXMetadata;
@@ -37,9 +35,7 @@ const LandingHeroDesktop = ({
       <GridCol base={7} className="fr-my-auto">
         <Title />
         <Bloc />
-        <CTA source={cta?.source ?? DEFAULT_CTA_SOURCE} title={cta?.title} href={cta?.href}>
-          {cta?.title}
-        </CTA>
+        {cta?.length && <CTA buttons={cta} />}
       </GridCol>
       <GridCol base={5} className="fr-mx-auto">
         <ImgCard />
@@ -65,8 +61,6 @@ const LandingHeroMobile = ({
         <Bloc />
       </GridCol>
     </Grid>
-    <CTA source={cta?.source ?? DEFAULT_CTA_SOURCE} title={cta?.title} href={cta?.href} asGroup>
-      {cta?.title}
-    </CTA>
+    {cta?.length && <CTA buttons={cta} />}
   </Container>
 );
