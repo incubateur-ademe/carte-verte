@@ -11,13 +11,15 @@ const DEFAULT_CTA_TITLE = "Je souhaite recevoir ma Carte Verte";
 
 export interface CTAProps {
   buttons: CarteVerteMDXCTAMetadata[];
+  mobile?: boolean;
 }
-export const CTA = ({ buttons }: CTAProps) => {
+export const CTA = ({ buttons, mobile: asGroup }: CTAProps) => {
   return (
     <ButtonsGroup
-      alignment="center"
-      buttonsSize="large"
+      alignment={asGroup ? "center" : "left"}
+      buttonsSize={asGroup ? "large" : "medium"}
       inlineLayoutWhen="always"
+      buttonsEquisized={asGroup}
       buttons={
         buttons.map(
           ({ source, priority, title = DEFAULT_CTA_TITLE, anchor, href }) =>

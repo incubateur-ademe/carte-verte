@@ -48,10 +48,11 @@ Un bloc `single-image` est découpé en 2 fichiers, `bloc.mdx` et `title.mdx`. L
 - `image.position`: position de l'image. Soit `left` soit `right`. (`left` par défaut)
 - `image.mobile`: les propriétés de l'image sur mobile
 - `image.mobile.size`: taille d'affichage de l'image sur mobile. Soit `small`, `medium`, `large`. (`medium` par défaut)
-- `cta`: les propriétés du CTA
-- `cta.source`: Source utilisée comme propriété Matomo lors du clic
-- `cta.href`: url de la page de destination (form par exemple). Si vide, l'url par défaut est utilisée (fichier config.ts).
-- `cta.title`: Texte du bouton. Si vide, "Je souhaite recevoir ma Carte Verte" est utilisé.
+- `cta`: un tableau de propriétés des CTA
+    - `cta.source`: Source utilisée comme propriété Matomo lors du clic
+    - `cta.href`: url de la page de destination (form par exemple). Si vide, `anchor` est utilisé, sinon l'url par défaut est utilisée (fichier config.ts).
+    - `cta.title`: Texte du bouton. Si vide, "Je souhaite recevoir ma Carte Verte" est utilisé.
+    - `cta.anchor`: ancre du bloc de destination ("bloc-01", "bloc-02", etc). Si vide, `href` est utilisé.
 
 #### Alternated
 Un bloc `alternated` est découpé en plusieurs fichiers, `title.mdx` qui contient le titre du bloc et ses métadonnées, et un fichier par colonne, `bloc_XX.mdx`. Les blocs sont ordonnés par numéro de fichier (`bloc_01.mdx` en premier, `bloc_02.mdx` en second, etc).
@@ -68,20 +69,22 @@ Un maximum de 12 blocs est autorisé.
     - `image.position`: position de l'image. Soit `left` soit `right`. (`left` par défaut)
     - `image.mobile`: les propriétés de l'image sur mobile
     - `image.mobile.size`: taille d'affichage de l'image sur mobile. Soit `small`, `medium`, `large`. (`medium` par défaut)
-- `cta`: les propriétés du CTA
-- `cta.source`: Source utilisée comme propriété Matomo lors du clic
-- `cta.href`: url de la page de destination (form par exemple). Si vide, l'url par défaut est utilisée (fichier config.ts).
-- `cta.title`: Texte du bouton. Si vide, "Je souhaite recevoir ma Carte Verte" est utilisé.
+- `cta`: un tableau de propriétés des CTA
+    - `cta.source`: Source utilisée comme propriété Matomo lors du clic
+    - `cta.href`: url de la page de destination (form par exemple). Si vide, `anchor` est utilisé, sinon l'url par défaut est utilisée (fichier config.ts).
+    - `cta.title`: Texte du bouton. Si vide, "Je souhaite recevoir ma Carte Verte" est utilisé.
+    - `cta.anchor`: ancre du bloc de destination ("bloc-01", "bloc-02", etc). Si vide, `href` est utilisé.
 
 #### Text only
 Un bloc `text-only` est découpé en 2 fichiers, `bloc.mdx` et `title.mdx`. Le premier contient le contenu du bloc, et le second contient le titre du bloc et ses métadonnées.
 
 **Métadonnées**
 - `type`: doit être `text-only`
-- `cta`: les propriétés du CTA
-- `cta.source`: Source utilisée comme propriété Matomo lors du clic
-- `cta.href`: url de la page de destination (form par exemple). Si vide, l'url par défaut est utilisée (fichier config.ts).
-- `cta.title`: Texte du bouton. Si vide, "Je souhaite recevoir ma Carte Verte" est utilisé.
+- `cta`: un tableau de propriétés des CTA
+    - `cta.source`: Source utilisée comme propriété Matomo lors du clic
+    - `cta.href`: url de la page de destination (form par exemple). Si vide, `anchor` est utilisé, sinon l'url par défaut est utilisée (fichier config.ts).
+    - `cta.title`: Texte du bouton. Si vide, "Je souhaite recevoir ma Carte Verte" est utilisé.
+    - `cta.anchor`: ancre du bloc de destination ("bloc-01", "bloc-02", etc). Si vide, `href` est utilisé.
 
 ### FAQ
 La FAQ est un ensemble de fichiers markdown numérotés situés dans le dossier `content/landing/faq`. Chaque fichier correspond à une question. La question est configurée dans les métadonnées du fichier, et le contenu du fichier est utilisé comme réponse. Le numéro du fichier est utilisé pour ordonner les questions sur la landing.

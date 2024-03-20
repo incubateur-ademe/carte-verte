@@ -61,6 +61,6 @@ const LandingHeroMobile = ({
         <Bloc />
       </GridCol>
     </Grid>
-    {cta?.length && <CTA buttons={cta} />}
+    {cta?.length && <CTA buttons={cta} mobile />}
   </Container>
 );

@@ -49,7 +49,7 @@ const LandingSingleImageBlocMobile = ({ content, title, image, metadata, highlig
       {highlight && <GridCol>{getHighlight(highlight)}</GridCol>}
       {metadata.cta?.length && (
         <GridCol>
-          <CTA buttons={metadata.cta} />
+          <CTA buttons={metadata.cta} mobile />
         </GridCol>
       )}
     </Grid>
