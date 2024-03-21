@@ -47,11 +47,9 @@ const LandingSingleImageBlocMobile = ({ content, title, image, metadata, highlig
       <GridCol {...getGridImageOffset(metadata.image.mobile?.size)}>{image}</GridCol>
       <GridCol>{content}</GridCol>
       {highlight && <GridCol>{getHighlight(highlight)}</GridCol>}
-      {metadata.cta && (
+      {metadata.cta?.length && (
         <GridCol>
-          <CTA source={metadata.cta.source} title={metadata.cta.title} asGroup href={metadata.cta.href}>
-            {metadata.cta.title}
-          </CTA>
+          <CTA buttons={metadata.cta} mobile />
         </GridCol>
       )}
     </Grid>
@@ -66,11 +64,7 @@ const LandingSingleImageBlocDesktop = ({ content, title, image, metadata, highli
         {title}
         <Box className={cx("fr-pt-4w", "fr-pb-2w")}>{content}</Box>
         {highlight && <GridCol>{getHighlight(highlight)}</GridCol>}
-        {metadata.cta && (
-          <CTA source={metadata.cta.source} title={metadata.cta.title} href={metadata.cta.href}>
-            {metadata.cta.title}
-          </CTA>
-        )}
+        {metadata.cta?.length && <CTA buttons={metadata.cta} />}
       </GridCol>
     </Grid>
   </Container>

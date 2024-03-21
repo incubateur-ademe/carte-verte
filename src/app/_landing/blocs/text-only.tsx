@@ -26,11 +26,9 @@ export const LandingTextOnlyBloc = async ({
           <Content />
         </GridCol>
         {highlight && <GridCol>{getHighlight(highlight)}</GridCol>}
-        {metadata.cta && (
+        {metadata.cta?.length && (
           <GridCol>
-            <CTA source={metadata.cta.source} title={metadata.cta.title} href={metadata.cta.href} asGroup>
-              {metadata.cta.title}
-            </CTA>
+            <CTA buttons={metadata.cta} />
           </GridCol>
         )}
       </Grid>
