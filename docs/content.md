@@ -16,10 +16,11 @@ Le contenu de la section "hero" est découpé en 2 fichiers, `hero_title.mdx` et
 L'image utilisée est `public/hero.svg`. La taille est fixée à `md`. À noter qu'elle est utilisé pour l'open graph (partage sur les réseaux sociaux).
 
 **Métadonnées**
-- `cta`: les propriétés du CTA
-- `cta.source`: Source utilisée comme propriété Matomo lors du clic
-- `cta.href`: url de la page de destination (form par exemple). Si vide, l'url par défaut est utilisée (fichier config.ts).
-- `cta.title`: Texte du bouton. Si vide, "Je souhaite recevoir ma Carte Verte" est utilisé.
+- `cta`: un tableau de propriétés des CTA
+    - `cta.source`: Source utilisée comme propriété Matomo lors du clic
+    - `cta.href`: url de la page de destination (form par exemple). Si vide, `anchor` est utilisé, sinon l'url par défaut est utilisée (fichier config.ts).
+    - `cta.title`: Texte du bouton. Si vide, "Je souhaite recevoir ma Carte Verte" est utilisé.
+    - `cta.anchor`: ancre du bloc de destination ("bloc-01", "bloc-02", etc). Si vide, `href` est utilisé.
 
 ### Blocs de contenu
 Les blocs de contenu sont des fichiers markdown situés dans le dossier `content/landing/blocs`. Ils contiennent des métadonnées pour gérer le titre, le contenu, et l'image du bloc si besoin. Optionnellement, ils peuvent aussi contenir des informations pour ajouter une mise en exergue additionnelle ("highlight") au bloc. La mise en exergue, si présente, sera affichée en dessous du contenu mais au dessus du CTA.
