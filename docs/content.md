@@ -27,7 +27,7 @@ Les blocs de contenu sont des fichiers markdown situés dans le dossier `content
 
 Chaque bloc doit être dans un dossier numéroté. Le numéro du dossier est utilisé pour ordonner les blocs sur la landing.
 
-#### Highlight
+#### Highlight
 Un bloc peut avoir une mise en exergue additionnelle ("highlight"). Pour cela, il faut ajouter un fichier `highlight.mdx` dans le dossier du bloc. Ce fichier contient le contenu de la mise en exergue ainsi que ses métadonnées.
 
 **Métadonnées**
