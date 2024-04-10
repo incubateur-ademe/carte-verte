@@ -34,13 +34,24 @@ declare type CarteVerteMDXLandingHighlightMetadata =
     }
   | undefined;
 
+declare type CarteVerteMDXCTAMetadata = {
+  readonly priority?: "primary" | "secondary" | "tertiary no outline" | "tertiary";
+  readonly source: string;
+  readonly title?: string;
+} & (
+  | {
+      readonly anchor: string;
+      readonly href?: never;
+    }
+  | {
+      readonly anchor?: never;
+      readonly href?: string;
+    }
+);
+
 declare type CarteVerteHeroMDXMetadata =
   | {
-      readonly cta?: {
-        readonly href?: string;
-        readonly source: string;
-        readonly title?: string;
-      };
+      readonly cta?: CarteVerteMDXCTAMetadata[];
     }
   | undefined;
 

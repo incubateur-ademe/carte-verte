@@ -54,11 +54,9 @@ export const LandingAlternatedBloc = async ({
           </GridCol>
         ))}
         {highlight && <GridCol>{getHighlight(highlight)}</GridCol>}
-        {metadata.cta && (
+        {metadata.cta?.length && (
           <GridCol mt={highlight ? "0" : "2w"}>
-            <CTA source={metadata.cta.source} title={metadata.cta.title} href={metadata.cta.href} asGroup>
-              {metadata.cta.title}
-            </CTA>
+            <CTA buttons={metadata.cta} mobile />
           </GridCol>
         )}
       </Grid>
