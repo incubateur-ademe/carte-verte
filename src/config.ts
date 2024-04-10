@@ -10,5 +10,5 @@ export const config = {
   appVersion: process.env.NEXT_PUBLIC_APP_VERSION!,
   appVersionCommit: process.env.NEXT_PUBLIC_APP_VERSION_COMMIT!,
   repositoryUrl: process.env.NEXT_PUBLIC_REPOSITORY_URL!,
-  formUrl: "https://tally.so/r/xxxx",
+  formUrl: "https://tally.so/r/mVJM0j",
 };
