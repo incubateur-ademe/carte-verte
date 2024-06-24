@@ -1,12 +1,8 @@
-import PolitiqueConfidentialiteCookiesContent from "@__content/politique-de-confidentialite/cookies.mdx";
-import PolitiqueConfidentialiteTraitementContent from "@__content/politique-de-confidentialite/traitement.mdx";
-import Table from "@codegouvfr/react-dsfr/Table";
+import { PrivacyPolicy } from "@incubateur-ademe/legal-pages-react";
 import { type Metadata } from "next";
 
-import { MdxLink } from "@/components/mdx/Link";
+import { config } from "@/config";
 import { Container } from "@/dsfr";
-import { AnchorLink } from "@/dsfr/client";
-import { anchorHeadingMDXComponents } from "@/mdx-components";
 
 import { FooterConsentManagementItem } from "../../consentManagement";
 import { sharedMetadata } from "../shared-metadata";
@@ -30,51 +26,29 @@ export const metadata: Metadata = {
 const PolitiqueConfidentialite = () => {
   return (
     <Container my="4w">
-      <h1>{title}</h1>
-      <PolitiqueConfidentialiteTraitementContent components={anchorHeadingMDXComponents} />
-      <AnchorLink anchor="sous-traitants" as="h2">
-        Sous-traitants
-      </AnchorLink>
-      <Table
-        bordered
-        headers={["Partenaire", "Pays destinataire", "Pays d'hébergement", "Traitement réalisé", "Garantie"]}
-        data={[
-          [
-            "Vercel",
-            "États-Unis",
-            "France (AWS cdg1)",
-            "Hébergement",
-            <MdxLink
-              key="vercel"
-              title="Déclaration de confidentialité Vercel"
-              href="https://vercel.com/legal/privacy-policy"
-            >
-              Déclaration de confidentialité Vercel
-            </MdxLink>,
-          ],
+      <PrivacyPolicy
+        includeBetaGouv
+        cookieConsentButton={<FooterConsentManagementItem />}
+        siteName={config.name}
+        cookies={[
+          {
+            category: "Mesure d’audience anonymisée",
+            name: "Matomo",
+            expiration: "13 mois",
+            finalities: "Mesure d’audience",
+            editor: "Matomo & ADEME",
+            destination: "France",
+          },
         ]}
-      />
-      <PolitiqueConfidentialiteCookiesContent
-        components={{
-          ...anchorHeadingMDXComponents,
-          CookiesTable: () => (
-            <Table
-              bordered
-              headers={[
-                "Catégorie de cookie",
-                "Nom du cookie",
-                "Durée de conservation",
-                "Finalités",
-                "Éditeur",
-                "Destination",
-              ]}
-              data={[
-                ["Mesure d’audience anonymisée", "Matomo", "13 mois", "Mesure d’audience", "Matomo & ADEME", "France"],
-              ]}
-            />
-          ),
-          CookiesButton: () => <FooterConsentManagementItem />,
-        }}
+        thirdParties={[
+          {
+            name: "Vercel",
+            country: "États-Unis",
+            hostingCountry: "France (AWS cdg1)",
+            serviceType: "Hébergement",
+            policyUrl: "https://vercel.com/legal/privacy-policy",
+          },
+        ]}
       />
     </Container>
   );
