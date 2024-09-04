@@ -24,7 +24,7 @@ export const Matomo = ({ env, nonce }: MatomoProps) => {
   const [previousPath, setPreviousPath] = useState("");
 
   useEffect(() => {
-    if (env === "dev") {
+    if (env !== "prod") {
       return;
     }
 
@@ -58,7 +58,7 @@ export const Matomo = ({ env, nonce }: MatomoProps) => {
 
   /* The @socialgouv/matomo-next does not work with next 13 */
   useEffect(() => {
-    if (!pathname || !matomoConsent || env === "dev") {
+    if (!pathname || !matomoConsent || env !== "prod") {
       return;
     }
 
