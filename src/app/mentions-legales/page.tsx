@@ -1,8 +1,8 @@
-import MentionsLegalesContent from "@__content/mentions-legales.mdx";
+import { LegalNotice } from "@incubateur-ademe/legal-pages-react";
 import { type Metadata } from "next";
 
+import { config } from "@/config";
 import { Container } from "@/dsfr";
-import { anchorHeadingMDXComponents } from "@/mdx-components";
 
 import { sharedMetadata } from "../shared-metadata";
 
@@ -24,8 +24,19 @@ export const metadata: Metadata = {
 
 const MentionsLegales = () => (
   <Container my="4w">
-    <h1>{title}</h1>
-    <MentionsLegalesContent components={anchorHeadingMDXComponents} />
+    <LegalNotice
+      includeBetaGouv
+      siteName={config.name}
+      siteUrl={config.host}
+      licenceUrl={`${config.repositoryUrl}/blob/${config.appVersionCommit}/LICENSE`}
+      privacyPolicyUrl="/politique-de-confidentialite"
+      siteHost={{
+        name: "Vercel Inc.",
+        address: "440 N Barranca Ave #4133<br/>Covina, CA 91723",
+        country: "États-Unis",
+        email: "privacy@vercel.com",
+      }}
+    />
   </Container>
 );
 
