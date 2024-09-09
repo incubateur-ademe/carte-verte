@@ -5,7 +5,6 @@ import { cx } from "@codegouvfr/react-dsfr/tools/cx";
 import { type Metadata } from "next";
 import { Fragment } from "react";
 
-import { config } from "@/config";
 import { Box, CenteredContainer, Container } from "@/dsfr";
 import { CollapsedSectionDynamicGroup } from "@/dsfr/base/client/CollapsedSectionDynamicGroup";
 
@@ -16,7 +15,6 @@ import { LandingTextOnlyBloc } from "./_landing/blocs/text-only";
 import { loadFaq } from "./_landing/faq/faqLoader";
 import { LandingHero } from "./_landing/hero";
 import { CTA } from "./CTA";
-import { ErrorDisplay } from "./ErrorDisplay";
 import styles from "./index.module.scss";
 import { sharedMetadata } from "./shared-metadata";
 
@@ -34,9 +32,9 @@ export const metadata: Metadata = {
 };
 
 const Home = async () => {
-  if (config.env === "prod") {
-    return <ErrorDisplay code="construction" noRedirect />;
-  }
+  // if (config.env === "prod") {
+  //   return <ErrorDisplay code="construction" noRedirect />;
+  // }
 
   const [blocs, faqQuestions] = await Promise.all([loadBlocs(), loadFaq()]);
 
