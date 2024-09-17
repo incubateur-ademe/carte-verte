@@ -34,7 +34,7 @@ export const Matomo = ({ env, nonce }: MatomoProps) => {
         disableCookies: true,
         nonce,
         onInitialization: () => {
-          push(["optUserOut"]);
+          // push(["optUserOut"]);
           push(["requireCookieConsent"]);
           push(["enableHeartBeatTimer"]);
           push(["disableQueueRequest"]);
@@ -46,11 +46,11 @@ export const Matomo = ({ env, nonce }: MatomoProps) => {
 
     if (matomoConsent) {
       console.debug("Activation des cookies Matomo.");
-      push(["forgetUserOptOut"]);
+      // push(["forgetUserOptOut"]);
       push(["rememberCookieConsentGiven"]);
     } else {
       console.debug("Désactivation des cookies Matomo.");
-      push(["optUserOut"]);
+      // push(["optUserOut"]);
       push(["forgetCookieConsentGiven"]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps -- don't listen on inited
