@@ -35,6 +35,7 @@ export const Matomo = ({ env, nonce }: MatomoProps) => {
         nonce,
         onInitialization: () => {
           // push(["optUserOut"]);
+          push(["forgetUserOptOut"]); // FIX
           push(["requireCookieConsent"]);
           push(["enableHeartBeatTimer"]);
           push(["disableQueueRequest"]);
