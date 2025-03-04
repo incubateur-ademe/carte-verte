@@ -6,7 +6,7 @@ declare namespace NodeJS {
          * Dist: `dev`  
          * {@link [Local Env Dist](.env.development)}
          */
-        CARTE_VERTE_ENV?: string;
+        APP_ENV?: string;
         /**
          * Dist: `1`  
          * {@link [Local Env Dist](.env.development)}
@@ -40,7 +40,7 @@ declare namespace NodeJS {
     }
 }
 declare type ProcessEnvCustomKeys = 
-    | 'CARTE_VERTE_ENV'
+    | 'APP_ENV'
     | 'NEXT_PUBLIC_MATOMO_SITE_ID'
     | 'NEXT_PUBLIC_MATOMO_URL'
     | 'NEXT_PUBLIC_APP_VERSION'
