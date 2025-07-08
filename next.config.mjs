@@ -94,10 +94,11 @@ const config = {
             key: "Permissions-Policy",
             value: "fullscreen=(), display-capture=(), camera=(), microphone=(), geolocation=()",
           },
-          {
-            key: "Cross-Origin-Embedder-Policy",
-            value: "credentialless",
-          },
+          // disabled for now. For stats iframe
+          //   {
+          //     key: "Cross-Origin-Embedder-Policy",
+          //     value: "credentialless",
+          //   },
           {
             key: "Cross-Origin-Opener-Policy",
             value: "same-origin",
