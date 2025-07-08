@@ -1,40 +1,12 @@
-import Card from "@codegouvfr/react-dsfr/Card";
+import styles from "./Stats.module.scss";
 
-import { Grid, GridCol } from "@/dsfr";
-import { fetchMatomoData } from "@/lib/matomo";
-
-export const StatsContent = async () => {
-  const matomoData = await fetchMatomoData();
-
+export const StatsContent = () => {
   return (
-    <Grid haveGutters>
-      <GridCol md={4}>
-        <Card
-          title="Nombre de visites"
-          desc="Nombre de visites total du site sur les 12 derniers mois"
-          start={<strong className="fr-display--md">{matomoData.nbVisits}</strong>}
-          size="large"
-          grey
-        />
-      </GridCol>
-      <GridCol md={4}>
-        <Card
-          title="Nombre de pages vues (total)"
-          desc="Nombre de pages vues au total sur le site sur les 12 derniers mois"
-          start={<strong className="fr-display--md">{matomoData.nbPageViews}</strong>}
-          size="large"
-          grey
-        />
-      </GridCol>
-      <GridCol md={4}>
-        <Card
-          title="Nombre de pages vues (uniques)"
-          desc="Nombre de pages vues uniques sur le site sur les 12 derniers mois"
-          start={<strong className="fr-display--md">{matomoData.nbUniqPageViews}</strong>}
-          size="large"
-          grey
-        />
-      </GridCol>
-    </Grid>
+    <iframe
+      title="Statistiques de Carte Verte"
+      className={styles["stats-iframe"]}
+      src="https://notion.incubateur.ademe.fr/ebd/2256523d57d7801b8b48d419308b9bb3"
+      frameBorder="0"
+    />
   );
 };

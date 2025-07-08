@@ -33,7 +33,11 @@ const csp = {
   "form-action": ["'self'", "https://*.gouv.fr"],
   "block-all-mixed-content": [],
   "upgrade-insecure-requests": [],
-  "frame-src": ["'none'"],
+  "frame-src": [
+    "'self'",
+    "https://accelerateur-transition-ecologique-ademe.notion.site",
+    "https://notion.incubateur.ademe.fr",
+  ],
 };
 
 const ContentSecurityPolicy = Object.entries(csp)
@@ -90,10 +94,11 @@ const config = {
             key: "Permissions-Policy",
             value: "fullscreen=(), display-capture=(), camera=(), microphone=(), geolocation=()",
           },
-          {
-            key: "Cross-Origin-Embedder-Policy",
-            value: "credentialless",
-          },
+          // disabled for now. For stats iframe
+          //   {
+          //     key: "Cross-Origin-Embedder-Policy",
+          //     value: "credentialless",
+          //   },
           {
             key: "Cross-Origin-Opener-Policy",
             value: "same-origin",

@@ -123,6 +123,10 @@ const RootLayout = ({ children }: PropsWithChildren) => {
               operatorLogo={operatorLogo}
               bottomItems={[
                 {
+                  text: "Statistiques",
+                  linkProps: { href: "/stats" },
+                },
+                {
                   text: "CGU",
                   linkProps: { href: "/cgu" },
                 },
